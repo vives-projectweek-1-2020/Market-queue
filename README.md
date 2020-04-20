@@ -5,22 +5,25 @@
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/vives-projectweek-1-2020/Market-queue?style=plastic)
 
 ## Goals
-* Building a system where people can search for their store and can find how many people there are waiting to get into that particular store. And how many people are allowed inside at a time.
-* Seeing the opening hours, and if the shop is open during the corona pandamic. and if they have one, a link to their online shop.
+* Builing a WPF app and site, to get data, where users are going, and to allow us to get their position. And show where other people are going.
+* show a screen to give people information how many people there are close, 2 buttons, going out and add place(or shop)
+    * going out --> give information about the place your going, how you are going and how long your going to stay.
+    * add Area --> (check if there is something else close so that you dont have duplicates nor to many places to checking to. (every km or so)) gps coordinates or adress. 
 
-## responsibilities
+## Responsibilities
 * Dimi --> Setting up database
 * Daan --> Wpf en grafische layouts
-* felix --> Code Behind
-* Aaron --> 
+* felix --> Code Behind Wpf/site
+* Aaron -->Site/Code Behind Wpf
+
 ## Used services
 * Wpf application, with c# behind code
 * MySQL as database.
 
 ## Acomplished things
 
-## expansions
-* Add a mailing system, so that if the store is really full at the moment people can get notified if it's a little emptier.
+## Expansions
+* visualisation with map.
 
 ## Members
 ![Dimi Catrysse](https://github.com/DimDim2001)
