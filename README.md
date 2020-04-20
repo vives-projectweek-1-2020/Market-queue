@@ -8,6 +8,11 @@
 * Building a system where people can search for their store and can find how many people there are waiting to get into that particular store. And how many people are allowed inside at a time.
 * Seeing the opening hours, and if the shop is open during the corona pandamic. and if they have one, a link to their online shop.
 
+## responsibilities
+* Dimi --> Setting up database
+* Daan --> Wpf en grafische layouts
+* felix --> Code Behind
+* Aaron --> 
 ## Used services
 * Wpf application, with c# behind code
 * MySQL as database.
