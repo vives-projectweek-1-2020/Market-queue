@@ -6,6 +6,26 @@
     margin: 30px;
     font-size: 45px;
 }
+body{
+    background-color: rgb(46, 226, 226);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: larger;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    color: black;
+}
+button{
+    
+    border-radius: 8px;
+    font-size: larger;
+    border-style: solid;
+    border-color:black;
+    padding: 8px;
+    margin-left: 2%;
+    margin-right: 2%;
+    background-color: greenyellow;
+}
 #buttons{
-    margin: 0% 0% 0% 45%;
+    margin-top:3%;
 }
