@@ -1,4 +1,12 @@
-State | Description
+﻿State | Description
 ---------|----------
-❌ | Database
-❌ | WPF-app
+❌ | Database: Stores: 	-Name 		❌
+			-Openinghours	❌
+			-#inside / #max ❌
+			-#outside	❌
+
+❌ | WPF-app		-Layout 	❌
+			-Working funtions❌
+
+❌ | Programming: 	-Input stores	❌
+			-Process input 	❌
