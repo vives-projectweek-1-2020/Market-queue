@@ -26,14 +26,14 @@
 * visualisation with map.
 
 ## Members
-![Dimi Catrysse](https://github.com/DimDim2001)
-![Aaron Van Vyve](https://github.com/AaronVanV)
-![Daan Dumon](https://github.com/DaanDumon)
-![Felix Falk](https://github.com/felixfalk2903)
+~ [Dimi Catrysse](https://github.com/DimDim2001)  
+~ [Aaron Van Vyve](https://github.com/AaronVanV)  
+~ [Daan Dumon](https://github.com/DaanDumon)  
+~ [Felix Falk](https://github.com/felixfalk2903)  
 
 ## Mentors
-![Nico De Witte](https://github.com/bioboost)
-![Piet Cordemans](https://github.com/pcordemans)
+~ [Nico De Witte](https://github.com/bioboost)  
+~ [Piet Cordemans](https://github.com/pcordemans)
 
 
 ## Used sites
