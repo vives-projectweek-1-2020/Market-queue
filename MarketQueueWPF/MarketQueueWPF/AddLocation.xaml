@@ -13,6 +13,7 @@
         </TextBlock>
         <CheckBox Content="Use my current location" FontFamily="Times New Roman"
                    FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,-400,0,0"/>
+        
         <TextBlock Text="City:" VerticalAlignment="Center" Width="100" Height="20" Margin="-140,-250,0,0"/>
         <TextBox x:Name="NewCity" Height="20" Width=" 100" Margin="-140,-200,0,0"/>
         <TextBlock Text="Street:" VerticalAlignment="Center" Width="100" Height="20" Margin="140,-250,0,0"/>
