@@ -15,7 +15,7 @@ body{
     height: 100%;
     color: black;
 }
-button{
+button{ 
     border-radius: 8px;
     font-size: larger;
     border-style: solid;
@@ -27,4 +27,12 @@ button{
 }
 #buttons{
     margin-top:3%;
+}
+input{
+    height: 20px;
+    padding:8px;
+    align-content: center;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: larger;
 }
