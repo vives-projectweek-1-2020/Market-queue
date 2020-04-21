@@ -1,0 +1,17 @@
+.timeinput{
+    
+    margin-left: 45px;
+    margin-right: 5px;
+   
+    width: 70px;
+
+}
+.mins{
+    
+    margin-right: auto;
+    
+
+}
+.timeflex{
+    display: inline-flex;
+}

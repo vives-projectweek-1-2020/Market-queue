@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="StyleSheet" href="../CSS/Index.css">
+    <link rel="StyleSheet" href="../CSS/GoingOut.css">
     <script src="../JavaScript/GoingOut.js" defer></script>
     <title>So you wanna go out huh?</title>
 </head>
@@ -14,13 +15,17 @@
 <input type="text" id="visitPlace"/>
 
 <h3>In how much time will you arrive there?</h3>
-<input type="number" id="arriveTime">
-<p>mins</p>
+<div class="timeflex">
+<input class="timeinput" type="number" id="arriveTime" >
+<p class="mins">mins</p>
+</div>
 
 <h4>How long are you staying?</h4>
-<input type="number" id="visitTime">
-<p>mins</p>
+<div class="timeflex"><input class="timeinput" type="number" id="visitTime">
+<p class="mins">mins</p>
+</div>
+<div>
 <button id="EnterButton"  >Enter</button>
-
+</div>
 </body>
 </html>
