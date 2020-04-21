@@ -1,5 +1,4 @@
 
-
 var x = document.getElementById("text");
 
 function getLocation() {
