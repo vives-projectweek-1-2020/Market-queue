@@ -1,5 +1,8 @@
 
-var x = document.getElementById("text");
+let x = document.getElementById("text");
+let latitude;
+let Longitude;
+let jsonData;
 
 function getLocation() {
   if (navigator.geolocation) {
@@ -10,6 +13,19 @@ function getLocation() {
 }
 
 function showPosition(position) {
-  x.innerHTML = "Latitude: " + position.coords.latitude + 
-  "<br>Longitude: " + position.coords.longitude;
+latitude = position.coords.latitude;
+longitude = position.coords.longitude;
+ // x.innerHTML = "Latitude: " + position.coords.latitude + 
+  //"<br>Longitude: " + position.coords.longitude;
+getPlace().then(data=> console.log(data));
 }
+
+
+async function getPlace(){
+    let Response = await fetch('https://api.opencagedata.com/geocode/v1/json?q=' + latitude + '+' + longitude + '&key=6e978319e06444d481d5ac3f328be3ef');
+    let data = await Response.json()
+    jsonData = data;
+    x.innerHTML = jsonData.results[0].formatted;
+    return data;
+}
+
