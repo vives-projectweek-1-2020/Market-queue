@@ -23,5 +23,12 @@ namespace MarketQueueWPF
         {
             InitializeComponent();
         }
+
+        private void ButtonAddLocation_Click(object sender, RoutedEventArgs e)
+        {
+            AddLocation window = new AddLocation();
+            window.Activate();
+            this.Close();
+        }
     }
 }

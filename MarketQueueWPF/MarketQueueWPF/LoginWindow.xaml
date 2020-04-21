@@ -15,7 +15,8 @@
                    TextAlignment="Center" FontSize="15" FontWeight="DemiBold" FontFamily="Times New Roman"
                    Padding="20" Height="87" Margin="18,89,18,373"/>
         <Button x:Name="ButtonAddLocation" Content="Add location" Height="20" Width="100"
-                Margin="-120,0,0,0"/>
+                Margin="-120,0,0,0"
+                Click="ButtonAddLocation_Click"/>
         <Button x:Name="ButtonMainWindow" Content="Existing Location" Width="100" 
                 Height="20" Margin="120,0,0,0"/>
 
