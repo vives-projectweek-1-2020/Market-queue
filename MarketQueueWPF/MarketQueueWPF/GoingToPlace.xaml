@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MarketQueueWPF"
         mc:Ignorable="d"
-        Title="GoingToPlace" Height="150" Width="300">
+        Title="GoingToPlace" 
+        Height="150" Width="300"
+        MinHeight="150" MinWidth="300"
+        WindowStartupLocation="CenterScreen">
     <Grid Margin="10">
         <TextBlock Text="In how many minutes will you leave?" VerticalAlignment="Top" HorizontalAlignment="Center"
                    FontSize="16" FontWeight="DemiBold" FontFamily="Times New Roman"/>
