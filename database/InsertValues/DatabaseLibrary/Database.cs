@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using MySql.Data.MySqlClient;
 
-namespace InsertValues
+namespace DatabaseLibrary
 {
     // Based on https://www.codeproject.com/Articles/43438/Connect-C-to-MySQL
-    class Database
+    public class Database
     {
         private MySqlConnection connection;
         private string server = "localhost";
