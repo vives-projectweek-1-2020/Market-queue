@@ -5,8 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MarketQueueWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="600" Width="400">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <ScrollBar Grid.RowSpan="7" Grid.Column="1"
+                   Minimum="0"
+                   Maximum="10"
+                   Value="50"
+                   Scroll="ScrollBarScroll"/>
+
+        <Border x:Name="Place0" Background="Red" Grid.Column="0" Grid.Row="0"/>
+        <Border x:Name="Place1" Background="Red" Grid.Column="0" Grid.Row="1"/>
+        <Border x:Name="Place2" Background="Red" Grid.Column="0" Grid.Row="2"/>
+        <Border x:Name="Place3" Background="Red" Grid.Column="0" Grid.Row="3"/>
+        <Border x:Name="Place4" Background="Red" Grid.Column="0" Grid.Row="4"/>
+        <Border x:Name="Place5" Background="Red" Grid.Column="0" Grid.Row="5"/>
+        <Border x:Name="Place6" Background="Red" Grid.Column="0" Grid.Row="6"/>
         
+
+
     </Grid>
 </Window>
