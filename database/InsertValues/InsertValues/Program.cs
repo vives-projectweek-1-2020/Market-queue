@@ -19,7 +19,8 @@ namespace InsertValues
             "DROP DATABASE IF EXISTS market_queue;",
             "CREATE DATABASE market_queue;",
             "USE market_queue;",
-            "CREATE TABLE area(id int(5) NOT NULL AUTO_INCREMENT,latitude DECIMAL(15,13) NOT NULL,longitude DECIMAL(15,13) NOT NULL,visitors SMALLINT UNSIGNED DEFAULT 0,PRIMARY KEY(id));"
+            "CREATE TABLE visitor(id int(5) NOT NULL AUTO_INCREMENT,area_id int(5) NOT NULL,check_in_time DATETIME NOT NULL,duration SMALLINT UNSIGNED NOT NULL,PRIMARY KEY(id));",
+            "CREATE TABLE area(id int(5) NOT NULL AUTO_INCREMENT,latitude DECIMAL(15,13) NOT NULL,longitude DECIMAL(15,13) NOT NULL,PRIMARY KEY(id));"
         };
         static void Main(string[] args)
         {
@@ -36,7 +37,7 @@ namespace InsertValues
                 string latitude = (child["json_geometry"]["coordinates"][1]).ToString().Replace(',', '.');
                 ExecuteNonQuery($"INSERT INTO area (latitude,longitude) VALUES ({latitude},{longitude});");
             }
-            Console.WriteLine("Database is set!");
+            Console.WriteLine("\n\nDatabase is set!");
         }
         static void ExecuteNonQuery(string query)
         {
