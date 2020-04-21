@@ -1,4 +1,10 @@
 
 #checkbox{
-    display: inline-block;
+    display: inline;
 }
+#isAtPlace{
+    float: inline-start;
+}   
+#isThereTexts{
+    display: inline;
+}   
