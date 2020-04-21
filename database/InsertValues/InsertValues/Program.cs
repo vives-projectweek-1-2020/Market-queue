@@ -29,7 +29,7 @@ namespace InsertValues
                 ExecuteNonQuery(query);
             }
             string content = File.ReadAllText("./speelruimte.json");
-            var data = JsonConvert.DeserializeObject<JArray>(content);
+            JArray data = JsonConvert.DeserializeObject<JArray>(content);
             foreach (JToken child in data.Children())
             {
                 string longitude = (child["json_geometry"]["coordinates"][0]).ToString().Replace(',','.');
@@ -43,7 +43,11 @@ namespace InsertValues
             bool result = database.ExecuteNonQuery(query);
             if (!result)
             {
-                Console.WriteLine("Something went wrong!");
+                Console.WriteLine("Something went wrong when trying: " + query);
+            }
+            else
+            {
+                Console.WriteLine(query);
             }
         }
     }
