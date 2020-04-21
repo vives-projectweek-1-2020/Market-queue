@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MarketQueueWPF"
         mc:Ignorable="d"
-        Title="AddLocation" Height="450" Width="800">
-    <Grid>
+        Title="AddLocation" Height="600" Width="400">
+    <Grid Margin="10">
+        <TextBlock FontSize="20" TextWrapping="WrapWithOverflow" TextAlignment="Center" FontFamily="Times New Roman"
+                   FontWeight="DemiBold"><Run Text="What location do you want to add? "/>
+                   <LineBreak/><Run Text="Can we use your current location?"/>
+        </TextBlock>
+        <CheckBox Content="Use my current location" FontFamily="Times New Roman"
+                   FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,-400,0,0"/>
+        <TextBlock Text="City:" VerticalAlignment="Center" Width="100" Height="20" Margin="-140,-250,0,0"/>
+        <TextBox x:Name="NewCity" Height="20" Width=" 100" Margin="-140,-200,0,0"/>
+        <TextBlock Text="Street:" VerticalAlignment="Center" Width="100" Height="20" Margin="140,-250,0,0"/>
+        <TextBox x:Name="NewStreet" Height="20" Width=" 100" Margin="140,-200,0,0"/>
         
+
+
+
     </Grid>
 </Window>
