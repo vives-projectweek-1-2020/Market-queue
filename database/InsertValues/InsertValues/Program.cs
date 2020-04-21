@@ -38,6 +38,12 @@ namespace InsertValues
                 ExecuteNonQuery($"INSERT INTO area (latitude,longitude) VALUES ({latitude},{longitude});");
             }
             Console.WriteLine("\n\nDatabase is set!");
+
+            /*
+            database.ExecuteNonQuery("insert into visitor (area_id,check_in_time,duration) values (5,current_time(),5);");
+            var q = database.ExecuteQueryWithColumnNames("SELECT * FROM visitor;", new string[] { "id","area_id","check_in_time","duration"});
+            q.ForEach(x => Console.WriteLine($"{x[0]} -- {x[1]} -- {x[2]} -- {x[3]}"));
+            */
         }
         static void ExecuteNonQuery(string query)
         {

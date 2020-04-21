@@ -66,13 +66,39 @@ namespace InsertValues
                 //close Connection
                 this.CloseConnection();
 
-                //return list to be displayed
                 return true;
             }
             else
             {
                 return false;
             }
+        }
+        public List<List<string>> ExecuteQueryWithColumnNames(string query,string[] columnNames)
+        {
+            List<List<string>> result = new List<List<string>>(); 
+            //Open connection
+            if (this.OpenConnection() == true)
+            {
+                //Create Command
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                while(dataReader.Read())
+                {
+                    List<string> row = new List<string>();
+                    foreach (string columnName in columnNames)
+                    {
+                        row.Add(dataReader[columnName].ToString());
+                    }
+                    result.Add(row);
+                }
+
+                dataReader.Close();
+
+                //close Connection
+                this.CloseConnection();
+            }
+            return result;
         }
 
     }
