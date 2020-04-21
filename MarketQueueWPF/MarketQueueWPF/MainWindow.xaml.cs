@@ -25,10 +25,7 @@ namespace MarketQueueWPF
             InitializeComponent();
         }
 
-        private void ScrollBarScroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
-        {
-            
-        }
+       
 
     }
 }
