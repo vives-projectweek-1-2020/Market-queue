@@ -9,9 +9,10 @@ namespace DatabaseLibrary
     public class Database
     {
         private MySqlConnection connection;
-        private string server = "localhost";
-        private string uid = "root";
-        private string password = "";
+        private string server = "192.168.1.41"; //91.181.93.103
+        private string port = "3306";   //3341 or 3340
+        private string uid = "projectweek";
+        private string password = "GuessWhat";
 
         //Constructor
         public Database()
@@ -23,7 +24,7 @@ namespace DatabaseLibrary
         private void Initialize()
         {
             string connectionString;
-            connectionString = "SERVER=" + server + ";"+ "UID=" + uid + ";" + "PASSWORD=" + password + ";";
+            connectionString = "SERVER=" + server + ";" + "PORT=" + port + ";"+ "UID=" + uid + ";" + "PASSWORD=" + password + ";";
             connection = new MySqlConnection(connectionString);
         }
         //open connection to database
