@@ -20,7 +20,7 @@ namespace InsertValues
             "DROP DATABASE IF EXISTS market_queue;",
             "CREATE DATABASE market_queue;",
             "USE market_queue;",
-            "CREATE TABLE visitor(id int(5) NOT NULL AUTO_INCREMENT,area_id int(5) NOT NULL,check_in_time DATETIME NOT NULL,duration SMALLINT UNSIGNED NOT NULL,PRIMARY KEY(id));",
+            "CREATE TABLE visitor(id int(5) NOT NULL AUTO_INCREMENT,area_id int(5) NOT NULL,check_in_time DATETIME NOT NULL DEFAULT current_time(),duration SMALLINT UNSIGNED NOT NULL,PRIMARY KEY(id));",
             "CREATE TABLE area(id int(5) NOT NULL AUTO_INCREMENT,latitude DECIMAL(15,13) NOT NULL,longitude DECIMAL(15,13) NOT NULL,PRIMARY KEY(id));"
         };
         static void Main(string[] args)
@@ -41,7 +41,7 @@ namespace InsertValues
             Console.WriteLine("\n\nDatabase is set!");
 
             /*
-            database.ExecuteNonQuery("insert into visitor (area_id,check_in_time,duration) values (5,current_time(),5);");
+            database.ExecuteNonQuery("insert into visitor (area_id,duration) values (5,2);");
             var q = database.ExecuteQueryWithColumnNames("SELECT * FROM visitor;", new string[] { "id","area_id","check_in_time","duration"});
             q.ForEach(x => Console.WriteLine($"{x[0]} -- {x[1]} -- {x[2]} -- {x[3]}"));
             */

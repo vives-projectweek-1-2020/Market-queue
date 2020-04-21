@@ -11,6 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DatabaseLibrary\DatabaseLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="speelruimte.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
