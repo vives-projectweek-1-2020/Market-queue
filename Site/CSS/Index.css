@@ -36,3 +36,9 @@ input{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: larger;
 }
+.navi {
+    display: inline;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  
