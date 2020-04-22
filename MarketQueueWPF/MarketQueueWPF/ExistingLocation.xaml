@@ -25,7 +25,7 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock x:Name="LocationPlace0" Text="Place:..." Height="20" VerticalAlignment="Top" Margin="10,10,10,0" Grid.ColumnSpan="2"/>
                     <Button Width="100" Height="20" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,40,10,40"
-                            Content="I'm On my way" Name="ButtonPlace0" Grid.Column="1" />
+                            Content="I'm On my way" Name="ButtonPlace0" Grid.Column="1" Click="ButtonPlace0_Click" />
                     <TextBlock x:Name="VisitorCountPlace0" Text=".../..." Height="20" HorizontalAlignment="Left"
                                VerticalAlignment="Center" Margin="10,40,0,40"/>
                 </Grid>

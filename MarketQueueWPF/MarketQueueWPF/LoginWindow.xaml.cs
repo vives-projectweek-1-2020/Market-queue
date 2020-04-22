@@ -38,7 +38,7 @@ namespace MarketQueueWPF
 
         private void ButtonExistingLocation_Click(object sender, RoutedEventArgs e)
         {
-            ExistingLocation window = new ExistingLocation();
+            ExistingLocation window = new ExistingLocation(latitude.ToString(), longtitude.ToString());
             window.Show();
             this.Close();
         }
@@ -57,6 +57,7 @@ namespace MarketQueueWPF
                     latitude = Watcher.Position.Location.Latitude;
                     longtitude = Watcher.Position.Location.Longitude;
                     ButtonAddLocation.IsEnabled = true;
+                    ButtonExistingLocation.IsEnabled = true;
                 }
             }
         }

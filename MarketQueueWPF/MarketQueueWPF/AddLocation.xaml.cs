@@ -42,14 +42,18 @@ namespace MarketQueueWPF
             {
                 Console.WriteLine("\n latitude: " + latitude + "    longtitude:     " + longtitude + "\n");
                 //send longtitude and latitude as new place to database
+                AddAreaToDatabase(latitude.ToString().Replace(',', '.'), longtitude.ToString().Replace(',', '.'));
+
             }
             else
             {
                 //get the street and village name and get the coordinates from the api
                 CalculateCoordinates();
-
                //then send it to the database
             }
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+            this.Close();
         }
 
         private  async void CalculateCoordinates()
@@ -68,12 +72,19 @@ namespace MarketQueueWPF
                 calculatedLongtitude = lng.Replace(',','.');
                 calculatedLatitude = lat.Replace(',', '.');
                 Console.WriteLine("\n calculatedLatitude: " + calculatedLatitude + "    calculatedLatitude:     " + calculatedLongtitude + "\n");
+                AddAreaToDatabase(calculatedLatitude, calculatedLongtitude);
             }
             catch
             {
                 MessageBox.Show("there has been an error parsing your data");
             }
 
+        }
+        private async void AddAreaToDatabase(string latitude, string longtitude)
+        {
+            string url = "http://91.181.93.103:3040/add/area?latitude=" + latitude+"&longitude="+longtitude;
+            HttpClient client = new HttpClient();
+            HttpResponseMessage res = await client.GetAsync(url);
         }
     }
 }

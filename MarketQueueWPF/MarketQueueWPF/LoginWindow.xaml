@@ -24,6 +24,7 @@
                 IsEnabled="False"/>
         <Button x:Name="ButtonExistingLocation" Content="Existing Location" Width="100" 
                 Height="20" Margin="120,100,0,0"
+                IsEnabled="False"
                 Click="ButtonExistingLocation_Click"/>
         <TextBlock x:Name="currentLocation" Text="If this is readable bug accured!" FontSize="15" 
                    FontFamily="Times New Roman" FontWeight="DemiBold" HorizontalAlignment="Center" 
