@@ -50,9 +50,30 @@ app.get('/get/area', function(req, res) {
       else { res.end("ERROR: " + JSON.stringify(error)); }
     });
   }
-  else if (req.query.latitude != undefined && req.query.longitude != undefined && Object.keys(req.query).length == 2)
+  else if (req.query.latitude != undefined && req.query.longitude != undefined && req.query.return == "area_id" && Object.keys(req.query).length == 3)
   {
-    res.end("=> GET NEAREST");
+    let query = 'SELECT id FROM market_queue.area WHERE '
+        + 'latitude>('+req.query.latitude+'-0.01) AND latitude<('+req.query.latitude+'+0.01) '
+        + 'AND longitude>('+req.query.longitude+'-0.01) AND longitude<('+req.query.longitude+'+0.01);'
+
+        connection.query(query, (error, rows)=>{
+          if(!error){ res.end(JSON.stringify(rows)); }
+          else { res.end("ERROR: " + JSON.stringify(error)); }
+        });
+    //res.end("=> GET NEAREST");
+  }
+  else if (req.query.latitude != undefined && req.query.longitude != undefined && req.query.return == "visitor" && Object.keys(req.query).length == 3)
+  {
+    let query = 'SELECT COUNT(*) AS total FROM market_queue.visitor '
+                + 'JOIN market_queue.area ON market_queue.area.id = market_queue.visitor.area_id '
+                + 'WHERE latitude>('+req.query.latitude+'-0.01) AND latitude<('+req.query.latitude+'+0.01) '
+                + 'AND longitude>('+req.query.longitude+'-0.01) AND longitude<('+req.query.longitude+'+0.01) '
+                + 'AND DATE_ADD(check_in_time,INTERVAL duration MINUTE)>NOW() '
+                + 'AND check_in_time<NOW();';
+    connection.query(query, (error, rows)=>{
+      if(!error){ res.end(JSON.stringify(rows)); }
+      else { res.end("ERROR: " + JSON.stringify(error)); }
+    });
   }
   else
   {
@@ -83,7 +104,7 @@ app.get('/add/area', function(req, res) {
 app.get('/get/visitor', function(req, res) {
   if(JSON.stringify(req.query) == "{}")
   {
-    let query = 'SELECT * FROM market_queue.visitor where DATE_ADD(check_in_time,INTERVAL duration MINUTE)>NOW();';
+    let query = 'SELECT * FROM market_queue.visitor where DATE_ADD(check_in_time,INTERVAL duration MINUTE)>NOW() AND check_in_time<NOW();';
     connection.query(query, (error, rows)=>{
       if(!error){ res.end(JSON.stringify(rows)); }
       else { res.end("ERROR: " + JSON.stringify(error)); }
@@ -99,7 +120,7 @@ app.get('/get/visitor', function(req, res) {
   }
   else if (req.query.id != undefined && Object.keys(req.query).length == 1)
   {
-    let query = 'SELECT * FROM market_queue.visitor where id =' + req.query.id + " AND DATE_ADD(check_in_time,INTERVAL duration MINUTE)>NOW();";
+    let query = 'SELECT * FROM market_queue.visitor where id =' + req.query.id + " AND DATE_ADD(check_in_time,INTERVAL duration MINUTE)>NOW() AND check_in_time<NOW();";
     connection.query(query, (error, rows)=>{
       if(!error){ res.end(JSON.stringify(rows)); }
       else { res.end("ERROR: " + JSON.stringify(error)); }
@@ -115,7 +136,7 @@ app.get('/get/visitor', function(req, res) {
   }
   else if (req.query.area_id != undefined && Object.keys(req.query).length == 1)
   {
-    let query = 'SELECT * FROM market_queue.visitor where area_id =' + req.query.area_id + " AND DATE_ADD(check_in_time,INTERVAL duration MINUTE)>NOW();";
+    let query = 'SELECT * FROM market_queue.visitor where area_id =' + req.query.area_id + " AND DATE_ADD(check_in_time,INTERVAL duration MINUTE)>NOW() AND check_in_time<NOW();";
     connection.query(query, (error, rows)=>{
       if(!error){ res.end(JSON.stringify(rows)); }
       else { res.end("ERROR: " + JSON.stringify(error)); }
