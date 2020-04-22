@@ -60,7 +60,6 @@ app.get('/get/area', function(req, res) {
           if(!error){ res.end(JSON.stringify(rows)); }
           else { res.end("ERROR: " + JSON.stringify(error)); }
         });
-    //res.end("=> GET NEAREST");
   }
   else if (req.query.latitude != undefined && req.query.longitude != undefined && req.query.return == "visitor" && Object.keys(req.query).length == 3)
   {
