@@ -1,7 +1,10 @@
 var inputPlace=" ";
 var inputTime=0;
 var inputArriveTime =0;
-
+var confirmation=""
+var confirmBox = document.getElementById("confirmBlank");
+confirmBox.style.display = "none";
+var confirmButtn = document.getElementById("confirmButton");
 
 function GetPlace(){
      inputPlace = document.getElementById("visitPlace").value
@@ -27,6 +30,12 @@ function ToConsole(){
     console.log("visit time= " + inputTime +" mins")
 }
 
+function ShowConfimation(){
+
+    confirmation="Please confirm:<br><br>" +"-Place: " +inputPlace + "<br>-Arrive time: "+inputArriveTime+" mins"+ "<br>-Visit time: "+inputTime +" mins"
+    document.getElementById('confirm').innerHTML = confirmation
+    confirmBox.style.display = "block"
+}
 
 
 document.getElementById('EnterButton').onclick = () => {
@@ -34,10 +43,18 @@ document.getElementById('EnterButton').onclick = () => {
     GetPlace();
     GetArriveTime();
     GetVisitTime();
-    if(
-        window.confirm("Please confirm:\n" +"-Place: " +inputPlace + "\n-Arrive time: "+inputArriveTime+" mins"+ "\n-Visit time: "+inputTime +" mins")
-    ){
-    ToConsole();
-    }
+    ShowConfimation();
     
+}
+
+document.getElementById('confirmButton').onclick = () => {
+    ToConsole();
+    document.getElementById('confirm').innerHTML = "Thank you!"
+    document.getElementById('cancelButton').innerHTML = "Back"
+    confirmButtn.style.display ="none"
+}
+document.getElementById('cancelButton').onclick = () => {
+    confirmButtn.style.display ="initial"
+    confirmBox.style.display = "none"
+    document.getElementById('cancelButton').innerHTML = "Cancel"
 }
