@@ -75,12 +75,11 @@ app.get('/add/area', function(req, res) {
   }
   else
   {
-    console.log(req.query);
     res.end("ERROR: wrong input!");
   }
 });
 
-//VISITOR
+//GET VISITOR
 app.get('/get/visitor', function(req, res) {
   if(JSON.stringify(req.query) == "{}")
   {
@@ -132,27 +131,35 @@ app.get('/get/visitor', function(req, res) {
   }
   else
   {
-    console.log(req.query);
     res.end("ERROR: wrong input!");
   }
   
 });
-app.get('/add/visitor/:columns/:values', function(req, res) {
-  let query = 'INSERT INTO market_queue.visitor (' + req.params.columns + ') VALUES (' + req.params.values + ');';
-  console.log(query);
-  connection.query(query, (error)=>{
+//ADD VISITOR
+app.get('/add/visitor', function(req, res) {
+  if(JSON.stringify(req.query) == "{}")
+  {
+    res.end("ERROR: no data given!");
+  }
+  else if(req.query.area_id != undefined && req.query.duration != undefined && Object.keys(req.query).length == 2)
+  {
+    let query = 'INSERT INTO market_queue.visitor (area_id,duration) VALUES (' + req.query.area_id + ',' + req.query.duration + ');';
+    connection.query(query, (error,rows)=>{
       if(!error){ res.end("SUCCESS: " + JSON.stringify(rows)); }
       else { res.end("ERROR: " + JSON.stringify(error)); }
     });
-});
-/*
-else if(req.query.area_id != undefined && req.query.duration != undefined && req.query.offset != undefined && Object.keys(req.query).length == 3)
+  }
+  else if(req.query.area_id != undefined && req.query.duration != undefined && req.query.offset != undefined && Object.keys(req.query).length == 3)
   {
-    let query = 'INSERT INTO market_queue.area (area_id,check_in_time,duration) VALUES (' 
-              + req.query.area_id + ',ADDTIME(current_time(), ' + req.query.offset + '),' + req.query.duration + ');';
+    let query = 'INSERT INTO market_queue.visitor (area_id,check_in_time, duration) VALUES (' 
+              + req.query.area_id + ',DATE_ADD(NOW(),INTERVAL ' + req.query.offset + ' MINUTE),' + req.query.duration + ');';
     connection.query(query, (error, rows)=>{
         if(!error){ res.end("SUCCESS: " + JSON.stringify(rows)); }
         else { res.end("ERROR: " + JSON.stringify(error)); }
       });
   }
-*/
+  else
+  {
+    res.end("ERROR: wrong input!");
+  }
+});
