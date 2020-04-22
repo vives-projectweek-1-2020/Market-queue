@@ -43,7 +43,6 @@ namespace MarketQueueWPF
                 var boe = JObject.Parse(data);
                 string place = boe["results"][0]["formatted"].ToString();
                 Console.WriteLine("\n latitude: " +place+ "\n");
-
                 LocationPlace0.Text = place;
             }
             catch
