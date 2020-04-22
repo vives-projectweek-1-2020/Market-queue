@@ -35,7 +35,7 @@ document.getElementById('EnterButton').onclick = () => {
     GetArriveTime();
     GetVisitTime();
     if(
-        window.confirm("Please confirm:\n" +"Place: " +inputPlace + ", Arrive time: "+inputArriveTime+" min"+ ", Visit time: "+inputTime +" min")
+        window.confirm("Please confirm:\n" +"-Place: " +inputPlace + "\n-Arrive time: "+inputArriveTime+" mins"+ "\n-Visit time: "+inputTime +" mins")
     ){
     ToConsole();
     }
