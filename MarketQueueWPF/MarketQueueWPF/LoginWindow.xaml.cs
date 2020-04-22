@@ -26,12 +26,14 @@ namespace MarketQueueWPF
         {
             InitializeComponent();
         }
-
+        double longtitude = 0;
+        double latitude = 0;
         private void ButtonAddLocation_Click(object sender, RoutedEventArgs e)
         {
-            AddLocation window = new AddLocation();
-            window.Show();
-            this.Close();
+            
+                AddLocation window = new AddLocation(latitude, longtitude);
+                window.Show();
+                this.Close();
         }
 
         private void ButtonExistingLocation_Click(object sender, RoutedEventArgs e)
@@ -52,8 +54,9 @@ namespace MarketQueueWPF
                 }
                 else
                 {
-                    currentLocation.Text = Watcher.Position.Location.Latitude.ToString();
-                    currentLocation.Text += " " + Watcher.Position.Location.Longitude.ToString();
+                    latitude = Watcher.Position.Location.Latitude;
+                    longtitude = Watcher.Position.Location.Longitude;
+                    ButtonAddLocation.IsEnabled = true;
                 }
             }
         }
@@ -61,14 +64,8 @@ namespace MarketQueueWPF
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-            // Create the watcher.
-
             Watcher = new GeoCoordinateWatcher();
-            // Catch the StatusChanged event.
-
             Watcher.StatusChanged += Watcher_StatusChanged;
-            // Start the watcher.
-
             Watcher.Start();
         }
     }
