@@ -74,5 +74,5 @@ var getJSON = function(url) {
     
 };
 function myFunction(arr) {
-    console.log(JSON.stingify(arr));
+    console.log(arr);
   }
