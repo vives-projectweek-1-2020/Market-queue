@@ -3,9 +3,8 @@
     display: inline;
 }
 #isAtPlace{
-    margin-top: 20px;
-    margin-right: 0px;
-    float: inline-start;
+    margin-right: 20px;
+    vertical-align: middle;
 }   
 #isThereTexts{
     margin-left: 25px;
