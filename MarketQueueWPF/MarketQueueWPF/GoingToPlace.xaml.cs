@@ -49,6 +49,10 @@ namespace MarketQueueWPF
             {
                 int offset = Convert.ToInt32(OffsetTime.Text);
                 int duration = Convert.ToInt32(VisitTime.Text);
+                if(offset<0 || duration <= 0)
+                {
+                    throw new FormatException();
+                }
 
                 string url = "http://91.181.93.103:3040/add/visitor?area_id=" + id + "&duration=" + duration + "&offset=" + offset;
                 string answer = SendAndRequestData(url);
