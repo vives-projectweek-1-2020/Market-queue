@@ -125,7 +125,7 @@ app.get('/get/visitor', function(req, res) {
       else { res.end("ERROR: " + JSON.stringify(error)); }
     });
   }
-  else if (req.query.id != undefined && req.query.all == true && Object.keys(req.query).length == 2)
+  else if (req.query.id != undefined && req.query.all == "true" && Object.keys(req.query).length == 2)
   {
     let query = 'SELECT * FROM market_queue.visitor where id =' + req.query.id + ";";
     connection.query(query, (error, rows)=>{
@@ -141,9 +141,25 @@ app.get('/get/visitor', function(req, res) {
       else { res.end("ERROR: " + JSON.stringify(error)); }
     });
   }
-  else if (req.query.area_id != undefined && req.query.all == true && Object.keys(req.query).length == 2)
+  else if (req.query.area_id != undefined && req.query.all == "true" && Object.keys(req.query).length == 2)
   {
     let query = 'SELECT * FROM market_queue.visitor where area_id =' + req.query.area_id + ";";
+    connection.query(query, (error, rows)=>{
+      if(!error){ res.end(JSON.stringify(rows)); }
+      else { res.end("ERROR: " + JSON.stringify(error)); }
+    });
+  }
+  else if (req.query.area_id != undefined && req.query.return == "count" && Object.keys(req.query).length == 2)
+  {
+    let query = 'SELECT COUNT(*) AS total FROM market_queue.visitor where area_id =' + req.query.area_id + " AND DATE_ADD(check_in_time,INTERVAL duration MINUTE)>NOW() AND check_in_time<NOW();";
+    connection.query(query, (error, rows)=>{
+      if(!error){ res.end(JSON.stringify(rows)); }
+      else { res.end("ERROR: " + JSON.stringify(error)); }
+    });
+  }
+  else if (req.query.area_id != undefined && req.query.return == "count" && req.query.all == "true" && Object.keys(req.query).length == 3)
+  {
+    let query = 'SELECT COUNT(*) AS total FROM market_queue.visitor where area_id =' + req.query.area_id + ";";
     connection.query(query, (error, rows)=>{
       if(!error){ res.end(JSON.stringify(rows)); }
       else { res.end("ERROR: " + JSON.stringify(error)); }
