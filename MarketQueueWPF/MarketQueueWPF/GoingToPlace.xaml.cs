@@ -31,7 +31,11 @@ namespace MarketQueueWPF
             if (e.Key == Key.Enter)
             {
                 string url = "http://91.181.93.103:3040/add/visitor?area_id=" + id +"&duration=" + VisitTime.Text.ToString();
-                SendAndRequestData(url);
+                string answer =  SendAndRequestData(url);
+                if(!answer.StartsWith("SUCCESS"))
+                {
+                    MessageBox.Show("Something went wrong!");
+                }
                 this.Close();
             }
         }

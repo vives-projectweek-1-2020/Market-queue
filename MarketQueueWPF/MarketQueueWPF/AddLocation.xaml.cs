@@ -64,15 +64,16 @@ namespace MarketQueueWPF
             }
         }
 
-        private async void CalculateCoordinates()
+        private void CalculateCoordinates()
         {
             try
             {
                 string url = "https://api.opencagedata.com/geocode/v1/json?q=" + NewStreet.Text + "% 20" + NewCity.Text + "&key=6e978319e06444d481d5ac3f328be3ef";
-                HttpClient client = new HttpClient();
-                HttpResponseMessage res = await client.GetAsync(url);
-                HttpContent content = res.Content;
-                var data = await content.ReadAsStringAsync();
+                string data = "";
+                using (System.Net.WebClient webClient = new System.Net.WebClient())
+                {
+                    data = webClient.DownloadString(url);
+                }
                 var boe = JObject.Parse(data);
                 string lat = boe["results"][0]["geometry"]["lat"].ToString();
                 string lng = boe["results"][0]["geometry"]["lng"].ToString();
@@ -84,15 +85,22 @@ namespace MarketQueueWPF
             }
             catch
             {
-                MessageBox.Show("there has been an error parsing your data");
+                MessageBox.Show("There has been an error parsing your data.");
             }
 
         }
-        private async void AddAreaToDatabase(string latitude, string longtitude)
+        private void AddAreaToDatabase(string latitude, string longtitude)
         {
             string url = "http://91.181.93.103:3040/add/area?latitude=" + latitude + "&longitude=" + longtitude;
-            HttpClient client = new HttpClient();
-            HttpResponseMessage res = await client.GetAsync(url);
+            string data = "";
+            using (System.Net.WebClient webClient = new System.Net.WebClient())
+            {
+                data = webClient.DownloadString(url);
+            }
+            if(!data.StartsWith("SUCCES"))
+            {
+                MessageBox.Show("Something went wrong!");
+            }
         }
     }
 }
