@@ -1,0 +1,16 @@
+
+#checkbox{
+    display: inline;
+}
+#isAtPlace{
+    margin-top: 20px;
+    margin-right: 0px;
+    float: inline-start;
+}   
+#isThereTexts{
+    margin-left: 25px;
+    display: inline;
+}   
+#Submit{
+    margin-top: 25px;
+}

@@ -1,0 +1,39 @@
+.timeinput{
+    
+    margin-left: 45px;
+    margin-right: 5px;
+   
+    width: 70px;
+
+}
+.mins{
+    
+    margin-right: auto;
+    
+
+}
+.timeflex{
+    display: inline-flex;
+}
+body{
+    z-index: 1;
+}
+#confirmBlank{
+    z-index: 100;
+    background-color: white;
+    position: fixed;
+    width: 20%; 
+    height: 35%; 
+    top: 35%;
+    left: 37%; 
+    border-color: black;
+    border-width: medium;
+    border-style: solid;
+    padding: 30px;
+}
+.confirmButtons{
+    background-color: lightgrey;
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-top: 17px;
+}
