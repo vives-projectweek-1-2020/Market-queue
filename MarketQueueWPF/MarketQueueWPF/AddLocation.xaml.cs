@@ -89,17 +89,42 @@ namespace MarketQueueWPF
             }
 
         }
-        private void AddAreaToDatabase(string latitude, string longtitude)
+        private void AddAreaToDatabase(string latitude, string longitude)
         {
-            string url = "http://91.181.93.103:3040/add/area?latitude=" + latitude + "&longitude=" + longtitude;
-            string data = "";
-            using (System.Net.WebClient webClient = new System.Net.WebClient())
+            int? totalNearbyAreas = TotalNearbyAreas(latitude, longitude);
+            if (totalNearbyAreas != null && TotalNearbyAreas(latitude,longitude)<5)
             {
-                data = webClient.DownloadString(url);
+                string url = "http://91.181.93.103:3040/add/area?latitude=" + latitude + "&longitude=" + longitude;
+                string data = "";
+                using (System.Net.WebClient webClient = new System.Net.WebClient())
+                {
+                    data = webClient.DownloadString(url);
+                }
+                if (!data.StartsWith("SUCCES"))
+                {
+                    MessageBox.Show("Something went wrong!");
+                }
             }
-            if(!data.StartsWith("SUCCES"))
+            else
             {
-                MessageBox.Show("Something went wrong!");
+                MessageBox.Show("There are already " + totalNearbyAreas + " areas in your environment.");
+            }
+        }
+        private int? TotalNearbyAreas(string latitude,string longitude)
+        {
+            try
+            {
+                string url = "http://91.181.93.103:3040/get/area?longitude=" + longitude + "&latitude=" + latitude + "&return=area_id";
+                string data = "";
+                using (System.Net.WebClient webClient = new System.Net.WebClient())
+                {
+                    data = webClient.DownloadString(url);
+                }
+                return JArray.Parse(data).Count;
+            }
+            catch (SystemException)
+            {
+                return null;
             }
         }
     }
