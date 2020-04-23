@@ -10,8 +10,10 @@
         MinHeight="400" MinWidth="400"
         WindowStartupLocation="CenterScreen">
     <StackPanel>
-        <TextBox Margin="100 10" Text="Search for Cty" x:Name="Sercher" GotFocus="Sercher_GotFocus" KeyDown="Sercher_KeyDown"/>
+        <TextBlock Margin="10" FontSize="15" Text="Press enter to search for your location." HorizontalAlignment="Center"/>
+        <TextBox Margin="100 10" Text="Search for City" x:Name="Sercher" GotFocus="Sercher_GotFocus" KeyDown="Sercher_KeyDown"/>
         <TextBox Margin="100 0" Text="Search for street name + number" x:Name="SercherCity" GotFocus="SercherCity_GotFocus" KeyDown="Sercher_KeyDown"/>
+        <TextBlock Margin="10" FontSize="15" Text="Dubble click on a location if you want to go there." HorizontalAlignment="Center"/>
         <ScrollViewer VerticalScrollBarVisibility="Auto"
                       Height="Auto">
             <ListView Margin="10" Name="Areas">
@@ -19,7 +21,7 @@
                     <GridView>
                         <GridViewColumn Header="Area Name" Width="300" DisplayMemberBinding="{Binding Area_Name}"/>
                         <GridViewColumn Header="visitors" Width="50" DisplayMemberBinding="{Binding visitors}"/>
-                        
+                        <GridViewColumn Header="id" Width="50" DisplayMemberBinding="{Binding id}"/>
                     </GridView>
                 </ListView.View>
                 <ListView.ItemContainerStyle>

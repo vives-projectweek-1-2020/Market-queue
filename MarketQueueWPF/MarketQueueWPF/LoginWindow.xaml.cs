@@ -50,7 +50,7 @@ namespace MarketQueueWPF
                 // Display the latitude and longitude.
                 if (Watcher.Position.Location.IsUnknown)
                 {
-                    currentLocation.Text = "Cannot find location data";
+                    MessageBox.Show("Cannot find location data");
                 }
                 else
                 {

@@ -10,9 +10,9 @@
         MinHeight="150" MinWidth="300"
         WindowStartupLocation="CenterScreen">
     <Grid Margin="10">
-        <TextBlock Text="In how many minutes will you leave?" VerticalAlignment="Top" HorizontalAlignment="Center"
+        <TextBlock Text="How long will you stay?" VerticalAlignment="Top" HorizontalAlignment="Center"
                    FontSize="16" FontWeight="DemiBold" FontFamily="Times New Roman"/>
-        <TextBox Width="100" Height="20" x:Name="VisitTime" />
+        <TextBox Width="100" Height="20" x:Name="VisitTime" KeyDown="VisitTime_KeyDown"/>
 
 
 

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Net;
 
 namespace MarketQueueWPF
 {
@@ -19,9 +20,29 @@ namespace MarketQueueWPF
     /// </summary>
     public partial class GoingToPlace : Window
     {
-        public GoingToPlace()
+        public GoingToPlace(string id)
         {
             InitializeComponent();
+            this.id = id;
+        }
+        string id = "";
+        private void VisitTime_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                string url = "http://91.181.93.103:3040/add/visitor?area_id=" + id +"&duration=" + VisitTime.Text.ToString();
+                SendAndRequestData(url);
+                this.Close();
+            }
+        }
+        private string SendAndRequestData(string url)
+        {
+            string content = "";
+            using (WebClient webClient = new WebClient())
+            {
+                content = webClient.DownloadString(url);
+            }
+            return content;
         }
     }
 }

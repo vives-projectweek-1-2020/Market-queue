@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MarketQueueWPF"
         mc:Ignorable="d"
         Title="LoginWindow" 
-        Height="400" Width="400"
+        Height="344" Width="400"
         MinHeight="400" MinWidth="400"
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded">
@@ -26,8 +26,5 @@
                 Height="20" Margin="120,100,0,0"
                 IsEnabled="False"
                 Click="ButtonExistingLocation_Click"/>
-        <TextBlock x:Name="currentLocation" Text="If this is readable bug accured!" FontSize="15" 
-                   FontFamily="Times New Roman" FontWeight="DemiBold" HorizontalAlignment="Center" 
-                   Padding="20" Margin="31,257,34,0"/>
     </Grid>
 </Window>

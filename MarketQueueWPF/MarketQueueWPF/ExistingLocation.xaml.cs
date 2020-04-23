@@ -57,7 +57,7 @@ namespace MarketQueueWPF
         {
             public string Area_Name { get; set; }
             public string visitors { get; set; }
-            public Button button { get; set; }
+            public string id { get; set; }
 
         }
         private void GetIdOfClosestAreas(string latitude, string longtitude)
@@ -75,12 +75,11 @@ namespace MarketQueueWPF
                 {
                     Console.WriteLine("\n Area_name " + GetGeolocationFRomAnArea(JArray.Parse(data)[i]["id"].ToString()) + "          visitors: " + GetVisitorsFromAnArea(JArray.Parse(data)[i]["id"].ToString() + "\n"));
                    
-                    items.Add(new Area() { Area_Name = GetGeolocationFRomAnArea(JArray.Parse(data)[i]["id"].ToString()), visitors = GetVisitorsFromAnArea(JArray.Parse(data)[i]["id"].ToString()) }) ;
+                    items.Add(new Area() { Area_Name = GetGeolocationFRomAnArea(JArray.Parse(data)[i]["id"].ToString()), visitors = GetVisitorsFromAnArea(JArray.Parse(data)[i]["id"].ToString()), id = JArray.Parse(data)[i]["id"].ToString() }) ;
                     Areas.ItemsSource = items;
                     
                 }
                 
-                //AmountOfAreaIDs = JArray.Parse(data).Count;
             }
             catch
             {
@@ -158,7 +157,7 @@ namespace MarketQueueWPF
 
         private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            GoingToPlace goingToPlace = new GoingToPlace();
+            GoingToPlace goingToPlace = new GoingToPlace(((Area)((ListViewItem)sender).Content).id);
             goingToPlace.Show();
             this.Close();
         }
