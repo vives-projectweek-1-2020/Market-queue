@@ -7,16 +7,17 @@
     <link rel="StyleSheet" href="../CSS/AboutUs.css">
     <title>About us</title>
 </head>
-<body>
+<body id="AboutUsBody">
+    <img src="../img/logo.jpg" class="logo">
     <h1>About us</h1>
     <hr id="separator">
     <nav class="nav">
-        <ul>
-            <li class="navi"><a href="../index.html" >Homepage</a></li>
-            <li class="navi"><a href="../GoingOut/index.html">Going Out</a></li>
-            <li class="navi"><a href="../AddArea/index.html">Add Area</a></li>
-            <li class="navi"><a href="../AboutUs/index.html">About us</a></li>
-        </ul>
+        <div class="nav">
+            <button  class="navbutton" id = "homepageButton" onclick="location.href = '../index.html';">Homepage</button>
+            <button  class="navbutton" id = "goingoutButton" onclick="location.href = '../GoingOut/index.html';">Going Out</button>
+            <button  class="navbutton" id = "addareaButton" onclick="location.href = '../AddArea/index.html';">Add Area</button>
+            <button  class="navbutton" id = "aboutusButton" onclick="location.href = '../AboutUs/index.html';">About us</button>
+        </div>
     </nav>
     <div class="Why">
         <h2>Why?</h2>

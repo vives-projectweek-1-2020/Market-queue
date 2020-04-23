@@ -49,7 +49,7 @@ document.getElementById('EnterButton').onclick = () => {
 
 document.getElementById('confirmButton').onclick = () => {
     ToConsole();
-    document.getElementById('confirm').innerHTML = "<br><br>Thank you!<br><br>"
+    document.getElementById('confirm').innerHTML = "<br><br>Thank you for your contribution!<br><br>"
     document.getElementById('cancelButton').innerHTML = "Back"
     confirmButtn.style.display ="none"
 }
