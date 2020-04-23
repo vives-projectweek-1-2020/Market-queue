@@ -26,19 +26,6 @@ namespace MarketQueueWPF
             this.id = id;
         }
         string id = "";
-        private void VisitTime_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                string url = "http://91.181.93.103:3040/add/visitor?area_id=" + id +"&duration=" + VisitTime.Text.ToString();
-                string answer =  SendAndRequestData(url);
-                if(!answer.StartsWith("SUCCESS"))
-                {
-                    MessageBox.Show("Something went wrong!");
-                }
-                this.Close();
-            }
-        }
         private string SendAndRequestData(string url)
         {
             string content = "";
@@ -48,10 +35,33 @@ namespace MarketQueueWPF
             }
             return content;
         }
-
         private void VisitTime_GotFocus(object sender, RoutedEventArgs e)
         {
             VisitTime.Text = "";
+        }
+        private void OffsetTime_GotFocus(object sender, RoutedEventArgs e)
+        {
+            OffsetTime.Text = "";
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int offset = Convert.ToInt32(OffsetTime.Text);
+                int duration = Convert.ToInt32(VisitTime.Text);
+
+                string url = "http://91.181.93.103:3040/add/visitor?area_id=" + id + "&duration=" + duration + "&offset=" + offset;
+                string answer = SendAndRequestData(url);
+                if (!answer.StartsWith("SUCCESS"))
+                {
+                    MessageBox.Show("Something went wrong!");
+                }
+                this.Close();
+            }
+            catch (SystemException)
+            {
+                MessageBox.Show("Invalid input!");
+            }
         }
     }
 }

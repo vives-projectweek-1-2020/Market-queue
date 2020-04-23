@@ -12,14 +12,23 @@
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
         FontFamily="{materialDesign:MaterialDesignFont}"
-        Height="150" Width="300"
-        MinHeight="150" MinWidth="300"
+        Height="300" Width="350"
+        MinHeight="300" MinWidth="350"
         WindowStartupLocation="CenterScreen">
     <Grid Margin="10">
-        <TextBlock Text="How long will you stay?" VerticalAlignment="Top" HorizontalAlignment="Center"
-                   FontSize="16" FontWeight="DemiBold" FontFamily="Times New Roman"/>
-        <TextBox GotFocus="VisitTime_GotFocus" Text="In minutes" Padding="1" Width="100" Height="27" x:Name="VisitTime" KeyDown="VisitTime_KeyDown"/>
-
+        <TextBlock Text="In how many minutes will you be there?" VerticalAlignment="Center" HorizontalAlignment="Center"
+                   FontSize="16" FontWeight="DemiBold" FontFamily="Times New Roman"
+                   Margin="0 0 0 175"/>
+        <TextBox GotFocus="OffsetTime_GotFocus" Text="In minutes" Margin="0 0 0 100" 
+                 Padding="1" Width="100" Height="30" x:Name="OffsetTime"
+                 TextAlignment="Center"/>
+        <TextBlock Text="How long will you stay?" VerticalAlignment="Center" HorizontalAlignment="Center"
+                   FontSize="16" FontWeight="DemiBold" FontFamily="Times New Roman"
+                   Margin="0 0 0 0"/>
+        <TextBox GotFocus="VisitTime_GotFocus" Text="In minutes" Margin="0 75 0 0" 
+                 Padding="1" Width="100" Height="30" x:Name="VisitTime"
+                 TextAlignment="Center"/>
+        <Button Content="Submit" Margin="0 200 0 0" Click="Button_Click"/>
 
 
     </Grid>
