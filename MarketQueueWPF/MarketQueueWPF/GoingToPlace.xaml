@@ -6,13 +6,19 @@
         xmlns:local="clr-namespace:MarketQueueWPF"
         mc:Ignorable="d"
         Title="GoingToPlace" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="{materialDesign:MaterialDesignFont}"
         Height="150" Width="300"
         MinHeight="150" MinWidth="300"
         WindowStartupLocation="CenterScreen">
     <Grid Margin="10">
         <TextBlock Text="How long will you stay?" VerticalAlignment="Top" HorizontalAlignment="Center"
                    FontSize="16" FontWeight="DemiBold" FontFamily="Times New Roman"/>
-        <TextBox Width="100" Height="20" x:Name="VisitTime" KeyDown="VisitTime_KeyDown"/>
+        <TextBox GotFocus="VisitTime_GotFocus" Text="In minutes" Padding="1" Width="100" Height="27" x:Name="VisitTime" KeyDown="VisitTime_KeyDown"/>
 
 
 

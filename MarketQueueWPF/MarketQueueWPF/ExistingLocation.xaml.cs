@@ -90,7 +90,7 @@ namespace MarketQueueWPF
         }
         private string GetVisitorsFromAnArea(string areaId)
         {
-            string url = "http://91.181.93.103:3040/get/visitor?area_id=" + areaId + "&all=true&return=count";
+            string url = "http://91.181.93.103:3040/get/visitor?area_id=" + areaId + "&return=count";
             var data = SendAndRequestData(url);
             var rawData = JArray.Parse(data)[0]["total"].ToString();
             Console.WriteLine("\n Amount of people in AREA0 close to you" + data + "\n");
@@ -111,7 +111,7 @@ namespace MarketQueueWPF
             }
             catch
             {
-                MessageBox.Show("there has been an error parsing your data");
+                MessageBox.Show("Please enter a valid Place");
                 return "";
             }
 
@@ -129,7 +129,6 @@ namespace MarketQueueWPF
             }
             catch
             {
-                MessageBox.Show("there has been an error parsing your data");
                 return "";
             }
 

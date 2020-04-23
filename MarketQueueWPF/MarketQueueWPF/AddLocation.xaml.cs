@@ -38,25 +38,33 @@ namespace MarketQueueWPF
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
-            if (checkBox.IsChecked.Value)
+            if (NewCity.Text != "" && NewStreet.Text != "")
             {
-                Console.WriteLine("\n latitude: " + latitude + "    longtitude:     " + longtitude + "\n");
-                //send longtitude and latitude as new place to database
-                AddAreaToDatabase(latitude.ToString().Replace(',', '.'), longtitude.ToString().Replace(',', '.'));
 
+                if (checkBox.IsChecked.Value)
+                {
+                    Console.WriteLine("\n latitude: " + latitude + "    longtitude:     " + longtitude + "\n");
+                    //send longtitude and latitude as new place to database
+                    AddAreaToDatabase(latitude.ToString().Replace(',', '.'), longtitude.ToString().Replace(',', '.'));
+
+                }
+                else
+                {
+                    //get the street and village name and get the coordinates from the api
+                    CalculateCoordinates();
+                    //then send it to the database
+                }
+                LoginWindow loginWindow = new LoginWindow();
+                loginWindow.Show();
+                this.Close();
             }
             else
             {
-                //get the street and village name and get the coordinates from the api
-                CalculateCoordinates();
-               //then send it to the database
+                text1.Text = "Please enter a valid location";
             }
-            LoginWindow loginWindow = new LoginWindow();
-            loginWindow.Show();
-            this.Close();
         }
 
-        private  async void CalculateCoordinates()
+        private async void CalculateCoordinates()
         {
             try
             {
@@ -68,8 +76,8 @@ namespace MarketQueueWPF
                 var boe = JObject.Parse(data);
                 string lat = boe["results"][0]["geometry"]["lat"].ToString();
                 string lng = boe["results"][0]["geometry"]["lng"].ToString();
-                
-                calculatedLongtitude = lng.Replace(',','.');
+
+                calculatedLongtitude = lng.Replace(',', '.');
                 calculatedLatitude = lat.Replace(',', '.');
                 Console.WriteLine("\n calculatedLatitude: " + calculatedLatitude + "    calculatedLatitude:     " + calculatedLongtitude + "\n");
                 AddAreaToDatabase(calculatedLatitude, calculatedLongtitude);
@@ -82,7 +90,7 @@ namespace MarketQueueWPF
         }
         private async void AddAreaToDatabase(string latitude, string longtitude)
         {
-            string url = "http://91.181.93.103:3040/add/area?latitude=" + latitude+"&longitude="+longtitude;
+            string url = "http://91.181.93.103:3040/add/area?latitude=" + latitude + "&longitude=" + longtitude;
             HttpClient client = new HttpClient();
             HttpResponseMessage res = await client.GetAsync(url);
         }

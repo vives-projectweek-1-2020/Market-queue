@@ -44,5 +44,10 @@ namespace MarketQueueWPF
             }
             return content;
         }
+
+        private void VisitTime_GotFocus(object sender, RoutedEventArgs e)
+        {
+            VisitTime.Text = "";
+        }
     }
 }
