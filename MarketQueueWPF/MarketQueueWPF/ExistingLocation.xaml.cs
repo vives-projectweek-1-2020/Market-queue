@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
+using System.Net;
 
 
 namespace MarketQueueWPF
@@ -36,72 +37,91 @@ namespace MarketQueueWPF
         string userLongtitude = "";
         string closestAreaId1 = "";
         string closestAreaId2 = "";
+        string closestAreaId3 = "";
+        string closestAreaId4 = "";
+        string closestAreaId5 = "";
+        string closestAreaId6 = "";
+        int AmountOfAreaIDs = 0;
 
-        private async void CalculateCoordinates(int witchPlaceNumber)
+        private string CalculateCoordinates(int witchPlaceNumber)
         {
             try
             {
                 string url = "https://api.opencagedata.com/geocode/v1/json?q=" + place0Lat + "+" + place0Lng + "&key=6e978319e06444d481d5ac3f328be3ef";
-                HttpClient client = new HttpClient();
-                HttpResponseMessage res = await client.GetAsync(url);
-                HttpContent content = res.Content;
-                var data = await content.ReadAsStringAsync();
+                var data = SendAndRequestData(url);
                 var boe = JObject.Parse(data);
                 string place = boe["results"][0]["formatted"].ToString();
-                Console.WriteLine("\n latitude: " +place+ "\n");
-                if (witchPlaceNumber == 0)
-                {
-                    LocationPlace0.Text = place;
-                }
+                Console.WriteLine("\n latitude: " + place + "\n");
+                return place;
             }
             catch
             {
                 MessageBox.Show("there has been an error parsing your data");
-                
+                return "";
             }
 
         }
-        private async void GetIdOfClosestAreas()
+        public class Area
         {
-            string url = "http://91.181.93.103:3040/get/area?latitude=" + userLatitude.Replace(",",".") +"&longitude="+ userLongtitude.Replace(",", ".") + "&return=area_id";
-            HttpClient client = new HttpClient();
-            HttpResponseMessage res = await client.GetAsync(url);
-            HttpContent content = res.Content;
-            var data = await content.ReadAsStringAsync();
-            closestAreaId1 = JArray.Parse(data)[0]["id"].ToString();
-            closestAreaId2= JArray.Parse(data)[1]["id"].ToString();
-            GetVisitorsFromAnArea(closestAreaId1);
-            GetGeolocationFRomAnArea(closestAreaId1);
-            GetVisitorsFromAnArea(closestAreaId2);
-            GetGeolocationFRomAnArea(closestAreaId2);
-            Console.WriteLine("\n closestAreaId1 " + closestAreaId1 + "          closest Areaid2" + closestAreaId2 + "\n");
+            public string Area_Name { get; set; }
+            public string visitors { get; set; }
+            public Button button { get; set; }
+
         }
-        private async void GetVisitorsFromAnArea(string areaId)
+        private void GetIdOfClosestAreas()
         {
-            string url = "http://91.181.93.103:3040/get/visitor?area_id=" + areaId;
-            HttpClient client = new HttpClient();
-            HttpResponseMessage res = await client.GetAsync(url);
-            HttpContent content = res.Content; 
-            var data = await content.ReadAsStringAsync();
-            
-            if (JArray.Parse(data).ToString() == "[]")
+            try
             {
-                VisitorCountPlace0.Text = "There are no visitors";
+                string url = "http://91.181.93.103:3040/get/area?latitude=" + userLatitude.Replace(",", ".") + "&longitude=" + userLongtitude.Replace(",", ".") + "&return=area_id";
+                var data = SendAndRequestData(url);
+                closestAreaId1 = JArray.Parse(data)[0]["id"].ToString();
+                List<Area> items = new List<Area>();
+                //items.Add(new Area() { Name = "John Doe", Age = 42, Mail = "john@doe-family.com" });
+                // VisitorCountPlace0.Text = GetVisitorsFromAnArea(closestAreaId1);
+                // LocationPlace0.Text = GetGeolocationFRomAnArea(closestAreaId1);
+                for (int i = 0; i < JArray.Parse(data).Count; i++)
+                {
+                    Console.WriteLine("\n Area_name " + GetGeolocationFRomAnArea(JArray.Parse(data)[i]["id"].ToString()) + "          visitors: " + GetVisitorsFromAnArea(JArray.Parse(data)[i]["id"].ToString() + "\n"));
+                    Button btn = new Button();
+                    btn.Content = "Jo";
+                    items.Add(new Area() { Area_Name = GetGeolocationFRomAnArea(JArray.Parse(data)[i]["id"].ToString()), visitors = GetVisitorsFromAnArea(JArray.Parse(data)[i]["id"].ToString()), button = btn }) ;
+                    Areas.ItemsSource = items;
+                }
+                AmountOfAreaIDs = JArray.Parse(data).Count;
             }
-            Console.WriteLine("\n Amount of people in AREA0 close to you"+data+"\n");
+            catch
+            {
+
+            }
+
+
         }
-        private async void GetGeolocationFRomAnArea(string areaID)
+        private string GetVisitorsFromAnArea(string areaId)
+        {
+            string url = "http://91.181.93.103:3040/get/visitor?area_id=" + areaId + "&all=true&return=count";
+            var data = SendAndRequestData(url);
+            var rawData = JArray.Parse(data)[0]["total"].ToString();
+            Console.WriteLine("\n Amount of people in AREA0 close to you" + data + "\n");
+            return rawData;
+        }
+        private string GetGeolocationFRomAnArea(string areaID)
         {
             string url = "http://91.181.93.103:3040/get/area?id=" + areaID;
-            HttpClient client = new HttpClient();
-            HttpResponseMessage res = await client.GetAsync(url);
-            HttpContent content = res.Content;
-            var data = await content.ReadAsStringAsync();
+            var data = SendAndRequestData(url);
             place0Lng = JArray.Parse(data)[0]["longitude"].ToString();
             place0Lat = JArray.Parse(data)[0]["latitude"].ToString();
-            Console.WriteLine("\n longtitude: " + place0Lng + "latitude: "+ place0Lat +"\n");
-            CalculateCoordinates(0);
-            
+            Console.WriteLine("\n longtitude: " + place0Lng + "latitude: " + place0Lat + "\n");
+            return CalculateCoordinates(0);
+
+        }
+        private string SendAndRequestData(string url)
+        {
+            string content = "";
+            using (WebClient webClient = new WebClient())
+            {
+                content = webClient.DownloadString(url);
+            }
+            return content;
         }
 
         private void ButtonPlace0_Click(object sender, RoutedEventArgs e)

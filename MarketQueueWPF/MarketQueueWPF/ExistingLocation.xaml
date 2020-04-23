@@ -13,71 +13,21 @@
 
         <ScrollViewer VerticalScrollBarVisibility="Auto"
                       Height="Auto">
-
-            <StackPanel>
-                <TextBlock Text="Search :" Height="20"/>
-                <TextBox x:Name="SearchBar" Height="20" Width="200" VerticalContentAlignment="Center" 
-                         HorizontalAlignment="Center" Margin="-20,-20,0,10"  />
-                <Grid x:Name="Place0" Background="Gray" Height="100" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="32*"/>
-                        <ColumnDefinition Width="39*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock x:Name="LocationPlace0" Text="Place:..." Height="20" VerticalAlignment="Top" Margin="10,10,10,0" Grid.ColumnSpan="2"/>
-                    <Button Width="100" Height="20" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,40,10,40"
-                            Content="I'm On my way" Name="ButtonPlace0" Grid.Column="1" Click="ButtonPlace0_Click" />
-                    <TextBlock x:Name="VisitorCountPlace0" Text=".../..." Height="20" HorizontalAlignment="Left"
-                               VerticalAlignment="Center" Margin="10,40,0,40"/>
-                </Grid>
-                <Grid x:Name="Place1" Background="Red" Height="100" >
-                    <TextBlock x:Name="LocationPlace1" Text="Place:..." Height="20" VerticalAlignment="Top" Margin="10"/>
-                    <Button Width="100" Height="20" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10"
-                            Content="I'm On my way" Name="ButtonPlace1" />
-                    <TextBlock x:Name="VisitorCountPlace1" Text=".../..." Height="20" HorizontalAlignment="Left"
-                               VerticalAlignment="Center" Margin="10"/>
-
-                </Grid>
-                <Grid x:Name="Place2" Background="Orange" Height="100" >
-                    <TextBlock x:Name="LocationPlace2" Text="Place:..." Height="20" VerticalAlignment="Top" Margin="10"/>
-                    <Button Width="100" Height="20" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10"
-                            Content="I'm On my way" Name="ButtonPlace2" />
-                    <TextBlock x:Name="VisitorCountPlace2" Text=".../..." Height="20" HorizontalAlignment="Left"
-                               VerticalAlignment="Center" Margin="10"/>
-
-                </Grid>
-                <Grid x:Name="Place3" Background="Green" Height="100">
-                    <TextBlock x:Name="LocationPlace3" Text="Place:..." Height="20" VerticalAlignment="Top" Margin="10"/>
-                    <Button Width="100" Height="20" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10"
-                            Content="I'm On my way" Name="ButtonPlace3" />
-                    <TextBlock x:Name="VisitorCountPlace3" Text=".../..." Height="20" HorizontalAlignment="Left"
-                               VerticalAlignment="Center" Margin="10"/>
-
-                </Grid>
-                <Grid x:Name="Place4" Background="Red" Height="100" >
-                    <TextBlock x:Name="LocationPlace4" Text="Place:..." Height="20" VerticalAlignment="Top" Margin="10"/>
-                    <Button Width="100" Height="20" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10"
-                            Content="I'm On my way" Name="ButtonPlace4" />
-                    <TextBlock x:Name="VisitorCountPlace4" Text=".../..." Height="20" HorizontalAlignment="Left"
-                               VerticalAlignment="Center" Margin="10"/>
-
-                </Grid>
-                <Grid x:Name="Place5" Background="Orange" Height="100" >
-                    <TextBlock x:Name="LocationPlace5" Text="Place:..." Height="20" VerticalAlignment="Top" Margin="10"/>
-                    <Button Width="100" Height="20" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10"
-                            Content="I'm On my way" Name="ButtonPlace5" />
-                    <TextBlock x:Name="VisitorCountPlace5" Text=".../..." Height="20" HorizontalAlignment="Left"
-                               VerticalAlignment="Center" Margin="10"/>
-
-                </Grid>
-                <Grid x:Name="Place6" Background="Gray" Height="100" >
-                    <TextBlock x:Name="LocationPlace6" Text="Place:..." Height="20" VerticalAlignment="Top" Margin="10"/>
-                    <Button Width="100" Height="20" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10"
-                            Content="I'm On my way" Name="ButtonPlace6" />
-                    <TextBlock x:Name="VisitorCountPlace6" Text=".../..." Height="20" HorizontalAlignment="Left"
-                               VerticalAlignment="Center" Margin="10"/>
-
-                </Grid>
-            </StackPanel>
+            <ListView Margin="10" Name="Areas">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Area Name" Width="200" DisplayMemberBinding="{Binding Area_Name}"/>
+                        <GridViewColumn Header="visitors" Width="50" DisplayMemberBinding="{Binding visitors}"/>
+                        <GridViewColumn Header="Button" Width="100" DisplayMemberBinding="{Binding button}">
+                            
+                        </GridViewColumn>
+                    </GridView>
+                    
+                    
+                </ListView.View>
+                
+                
+            </ListView>
 
         </ScrollViewer>
 
