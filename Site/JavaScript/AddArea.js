@@ -33,10 +33,10 @@ longitude = position.coords.longitude;
     {
       var MyLatitude = data.results[0].geometry.lat;
       var MyLongitude = data.results[0].geometry.lng;
-      getJSON('http://192.168.1.40:3000/get/area?longitude=' + MyLongitude + '&latitude=' + MyLatitude + '&return=area_id',function(json){
+      getJSON('http://91.181.93.103:3040/get/area?longitude=' + MyLongitude + '&latitude=' + MyLatitude + '&return=area_id',function(json){
         if(JSON.parse(json).length<5)
         {
-          getJSON('http://192.168.1.40:3000/add/area?longitude=' + MyLongitude + '&latitude=' + MyLatitude,function(json2){
+          getJSON('http://91.181.93.103:3040/add/area?longitude=' + MyLongitude + '&latitude=' + MyLatitude,function(json2){
             if(json2.startsWith("SUCCESS"))
             {
               x.innerHTML = "Added<br/>" + x.innerHTML;
@@ -71,10 +71,10 @@ async function getCoordinates(){
   jsonData = data;
   x.innerHTML = "Latitude: " + jsonData.results[0].geometry.lat + "<br>Longitude: " + jsonData.results[0].geometry.lng;
 
-  getJSON('http://192.168.1.40:3000/get/area?longitude=' + jsonData.results[0].geometry.lng + '&latitude=' + jsonData.results[0].geometry.lat + '&return=area_id',function(json){
+  getJSON('http://91.181.93.103:3040/get/area?longitude=' + jsonData.results[0].geometry.lng + '&latitude=' + jsonData.results[0].geometry.lat + '&return=area_id',function(json){
         if(JSON.parse(json).length<5)
         {
-          getJSON('http://192.168.1.40:3000/add/area?longitude=' + jsonData.results[0].geometry.lng + '&latitude=' + jsonData.results[0].geometry.lat,function(json2){
+          getJSON('http://91.181.93.103:3040/add/area?longitude=' + jsonData.results[0].geometry.lng + '&latitude=' + jsonData.results[0].geometry.lat,function(json2){
             if(json2.startsWith("SUCCESS"))
             {
               x.innerHTML = "Added<br/>" + jsonData.results[0].formatted;
