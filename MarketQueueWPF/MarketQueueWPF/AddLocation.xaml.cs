@@ -38,29 +38,31 @@ namespace MarketQueueWPF
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
-            if (NewCity.Text != "" && NewStreet.Text != "")
+
+            if (checkBox.IsChecked.Value)
             {
+                Console.WriteLine("\n latitude: " + latitude + "    longtitude:     " + longtitude + "\n");
+                //send longtitude and latitude as new place to database
+                AddAreaToDatabase(latitude.ToString().Replace(',', '.'), longtitude.ToString().Replace(',', '.'));
 
-                if (checkBox.IsChecked.Value)
-                {
-                    Console.WriteLine("\n latitude: " + latitude + "    longtitude:     " + longtitude + "\n");
-                    //send longtitude and latitude as new place to database
-                    AddAreaToDatabase(latitude.ToString().Replace(',', '.'), longtitude.ToString().Replace(',', '.'));
-
-                }
-                else
-                {
-                    //get the street and village name and get the coordinates from the api
-                    CalculateCoordinates();
-                    //then send it to the database
-                }
-                LoginWindow loginWindow = new LoginWindow();
-                loginWindow.Show();
-                this.Close();
             }
             else
             {
-                text1.Text = "Please enter a valid location";
+                if (NewCity.Text != "" && NewStreet.Text != "")
+                {
+
+                    //get the street and village name and get the coordinates from the api
+                    CalculateCoordinates();
+                    //then send it to the database
+
+                    LoginWindow loginWindow = new LoginWindow();
+                    loginWindow.Show();
+                    this.Close();
+                }
+                else
+                {
+                    text1.Text = "Please enter a valid location";
+                }
             }
         }
 
