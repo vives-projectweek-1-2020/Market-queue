@@ -53,7 +53,7 @@ namespace MarketQueueWPF
             }
 
         }
-        public class Area
+        class Area
         {
             public string Area_Name { get; set; }
             public string visitors { get; set; }

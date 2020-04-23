@@ -25,9 +25,9 @@
             <ListView Margin="10" Name="Areas">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Area Name" Width="240" DisplayMemberBinding="{Binding Area_Name}"/>
+                        <GridViewColumn Header="Area Name" Width="250" DisplayMemberBinding="{Binding Area_Name}"/>
                         <GridViewColumn Header="visitors" Width="100" DisplayMemberBinding="{Binding visitors}"/>
-                        <GridViewColumn Header="id" Width="50" DisplayMemberBinding="{Binding id}"/>
+                        <GridViewColumn Header="id" Width="0" DisplayMemberBinding="{Binding id}"/>
                     </GridView>
                 </ListView.View>
                 <ListView.ItemContainerStyle>
