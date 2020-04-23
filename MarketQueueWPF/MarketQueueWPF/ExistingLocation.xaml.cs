@@ -29,21 +29,14 @@ namespace MarketQueueWPF
             InitializeComponent();
             this.userLatitude = userLatitude;
             this.userLongtitude = userLongtitude;
-            GetIdOfClosestAreas();
+            GetIdOfClosestAreas(userLatitude, userLongtitude);
         }
         string place0Lng = "";
         string place0Lat = "";
         string userLatitude = "";
         string userLongtitude = "";
-        string closestAreaId1 = "";
-        string closestAreaId2 = "";
-        string closestAreaId3 = "";
-        string closestAreaId4 = "";
-        string closestAreaId5 = "";
-        string closestAreaId6 = "";
-        int AmountOfAreaIDs = 0;
 
-        private string CalculateCoordinates(int witchPlaceNumber)
+        private string CalculateCoordinates()
         {
             try
             {
@@ -51,7 +44,6 @@ namespace MarketQueueWPF
                 var data = SendAndRequestData(url);
                 var boe = JObject.Parse(data);
                 string place = boe["results"][0]["formatted"].ToString();
-                Console.WriteLine("\n latitude: " + place + "\n");
                 return place;
             }
             catch
@@ -68,26 +60,27 @@ namespace MarketQueueWPF
             public Button button { get; set; }
 
         }
-        private void GetIdOfClosestAreas()
+        private void GetIdOfClosestAreas(string latitude, string longtitude)
         {
             try
             {
-                string url = "http://91.181.93.103:3040/get/area?latitude=" + userLatitude.Replace(",", ".") + "&longitude=" + userLongtitude.Replace(",", ".") + "&return=area_id";
+                
+                string url = "http://91.181.93.103:3040/get/area?latitude=" + latitude.Replace(",", ".") + "&longitude=" + longtitude.Replace(",", ".") + "&return=area_id";
                 var data = SendAndRequestData(url);
-                closestAreaId1 = JArray.Parse(data)[0]["id"].ToString();
+                Console.WriteLine("\n data get closest areas: " + data + "\n");
                 List<Area> items = new List<Area>();
-                //items.Add(new Area() { Name = "John Doe", Age = 42, Mail = "john@doe-family.com" });
-                // VisitorCountPlace0.Text = GetVisitorsFromAnArea(closestAreaId1);
-                // LocationPlace0.Text = GetGeolocationFRomAnArea(closestAreaId1);
+                Areas.ItemsSource = items;
+                
                 for (int i = 0; i < JArray.Parse(data).Count; i++)
                 {
                     Console.WriteLine("\n Area_name " + GetGeolocationFRomAnArea(JArray.Parse(data)[i]["id"].ToString()) + "          visitors: " + GetVisitorsFromAnArea(JArray.Parse(data)[i]["id"].ToString() + "\n"));
-                    Button btn = new Button();
-                    btn.Content = "Jo";
-                    items.Add(new Area() { Area_Name = GetGeolocationFRomAnArea(JArray.Parse(data)[i]["id"].ToString()), visitors = GetVisitorsFromAnArea(JArray.Parse(data)[i]["id"].ToString()), button = btn }) ;
+                   
+                    items.Add(new Area() { Area_Name = GetGeolocationFRomAnArea(JArray.Parse(data)[i]["id"].ToString()), visitors = GetVisitorsFromAnArea(JArray.Parse(data)[i]["id"].ToString()) }) ;
                     Areas.ItemsSource = items;
+                    
                 }
-                AmountOfAreaIDs = JArray.Parse(data).Count;
+                
+                //AmountOfAreaIDs = JArray.Parse(data).Count;
             }
             catch
             {
@@ -104,6 +97,44 @@ namespace MarketQueueWPF
             Console.WriteLine("\n Amount of people in AREA0 close to you" + data + "\n");
             return rawData;
         }
+        private string CalculateLatitude(string city, string street)
+        {
+            try
+            {
+                string url = "https://api.opencagedata.com/geocode/v1/json?q=" + street + "%20" + city + "&key=6e978319e06444d481d5ac3f328be3ef";
+                var data = SendAndRequestData(url);
+                var boe = JObject.Parse(data);
+                string lat = boe["results"][0]["geometry"]["lat"].ToString();
+                string lng = boe["results"][0]["geometry"]["lng"].ToString();
+                Console.WriteLine("\n Latitude: " + lat + "\n");
+
+                return lat.Replace(',', '.');
+            }
+            catch
+            {
+                MessageBox.Show("there has been an error parsing your data");
+                return "";
+            }
+
+        }
+        private string CalculateLongtitude(string city, string street)
+        {
+            try
+            {
+                string url = "https://api.opencagedata.com/geocode/v1/json?q=" + street + "%20" + city + "&key=6e978319e06444d481d5ac3f328be3ef";
+                var data = SendAndRequestData(url);
+                var boe = JObject.Parse(data);
+                string lat = boe["results"][0]["geometry"]["lat"].ToString();
+                string lng = boe["results"][0]["geometry"]["lng"].ToString();
+                return lng.Replace(',', '.');
+            }
+            catch
+            {
+                MessageBox.Show("there has been an error parsing your data");
+                return "";
+            }
+
+        }
         private string GetGeolocationFRomAnArea(string areaID)
         {
             string url = "http://91.181.93.103:3040/get/area?id=" + areaID;
@@ -111,7 +142,7 @@ namespace MarketQueueWPF
             place0Lng = JArray.Parse(data)[0]["longitude"].ToString();
             place0Lat = JArray.Parse(data)[0]["latitude"].ToString();
             Console.WriteLine("\n longtitude: " + place0Lng + "latitude: " + place0Lat + "\n");
-            return CalculateCoordinates(0);
+            return CalculateCoordinates();
 
         }
         private string SendAndRequestData(string url)
@@ -124,11 +155,34 @@ namespace MarketQueueWPF
             return content;
         }
 
-        private void ButtonPlace0_Click(object sender, RoutedEventArgs e)
+
+        private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             GoingToPlace goingToPlace = new GoingToPlace();
             goingToPlace.Show();
             this.Close();
+        }
+
+        private void Sercher_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Console.WriteLine("------------------------------------------------------------------------------------------------");
+
+                GetIdOfClosestAreas(CalculateLatitude(SercherCity.Text, Sercher.Text),CalculateLongtitude(SercherCity.Text, Sercher.Text));
+                Console.WriteLine("------------------------------------------------------------------------------------------------");
+            }
+        }
+
+        private void Sercher_GotFocus(object sender, RoutedEventArgs e)
+        {
+            Sercher.Text = "";
+        }
+
+        private void SercherCity_GotFocus(object sender, RoutedEventArgs e)
+        {
+            SercherCity.Text = "";
+
         }
     }
 }
