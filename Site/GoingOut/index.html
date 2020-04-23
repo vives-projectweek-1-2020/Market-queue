@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="StyleSheet" href="../CSS/Index.css">
     <link rel="StyleSheet" href="../CSS/GoingOut.css">
+    <link rel="icon" type="image/png"  href="../img/logo.png">
     <script src="../JavaScript/GoingOut.js" defer></script>
     <title>Going Out</title>
 </head>
 <body class="body">
+    <img src="../img/logo.jpg" class="logo" id="goingoutlogo">
     <h1>Going Out</h1>
     <hr id="separator">
-    <nav class="nav">
-        <ul>
-            <li class="navi"><a href="../index.html" >Homepage</a></li>
-            <li class="navi"><a href="../GoingOut/index.html">Going Out</a></li>
-            <li class="navi"><a href="../AddArea/index.html">Add Area</a></li>
-            <li class="navi"><a href="../AboutUs/index.html">About us</a></li>
-        </ul>
-    </nav>
+    <div class="nav">
+        <button  class="navbutton" id = "homepageButton" onclick="location.href = '../index.html';">Homepage</button>
+        <button  class="navbutton" id = "goingoutButton" onclick="location.href = '../GoingOut/index.html';">Going Out</button>
+        <button  class="navbutton" id = "addareaButton" onclick="location.href = '../AddArea/index.html';">Add Area</button>
+        <button  class="navbutton" id = "aboutusButton" onclick="location.href = '../AboutUs/index.html';">About us</button>
+    </div>
 
     
 <h3>Where are you going?</h3>
