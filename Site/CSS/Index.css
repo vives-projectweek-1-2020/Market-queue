@@ -45,11 +45,11 @@ input{
     background-color:rgb(255, 227, 115);
   }
   .logo{
-    position: fixed;
-    top:5%;
-    left:25%; 
+    padding-top: 10px;
     height: 60px;
     width: 60px;
-    z-index: 10;
-
+    
+  }
+  .logodiv{
+    display: inline-flex;
   }
