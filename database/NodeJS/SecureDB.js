@@ -1,6 +1,15 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+const cors = require('cors')
+app.use(cors({
+ origin(origin, callback) {
+ return callback(null, true)
+ },
+ optionsSuccessStatus: 200,
+ credentials: true,
+}))
+
 
 const mysql = require('mysql');
 let connection = mysql.createConnection({
