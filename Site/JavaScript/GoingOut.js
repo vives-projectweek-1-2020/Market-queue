@@ -42,18 +42,39 @@ document.getElementById('EnterButton').onclick = () => {
     GetPlace();
     GetArriveTime();
     GetVisitTime();
-    ShowConfimation();
-    
+    if(inputTime>0 && inputArriveTime>=0)
+    {
+        ShowConfimation();
+    }
 }
-
+var getter;
 document.getElementById('confirmButton').onclick = () => {
     ToConsole();
-    getJSON('http://91.181.93.103:3040/get/area',function(json){
-        console.log(json);
+    getCoordinates(inputPlace,function(geojson){
+        var MyLatitude = geojson.results[0].geometry.lat;
+        var MyLongitude = geojson.results[0].geometry.lng;
+
+        getJSON('http://91.181.93.103:3040/get/area?longitude=' + MyLongitude + '&latitude=' + MyLatitude + '&return=area_id',function(json){
+            var areaID = JSON.parse(json)[0].id;
+              getJSON('http://91.181.93.103:3040/add/visitor?area_id=' + areaID + '&duration=' + inputArriveTime + '&offset=' + inputTime,function(json2){
+                  console.log(json2);
+                  if(json2.startsWith("SUCCESS"))
+                  {
+                    document.getElementById('confirm').innerHTML = "<br><br>Thank you for your contribution!<br><br>"
+                    document.getElementById('cancelButton').innerHTML = "Back"
+                    confirmButtn.style.display ="none"
+                  }
+                  else
+                  {
+                    document.getElementById('confirm').innerHTML = "<br><br>Something went wrong!<br><br>"
+                    document.getElementById('cancelButton').innerHTML = "Back"
+                    confirmButtn.style.display ="none"
+                  }
+              });
+        })
     })
-    document.getElementById('confirm').innerHTML = "<br><br>Thank you for your contribution!<br><br>"
-    document.getElementById('cancelButton').innerHTML = "Back"
-    confirmButtn.style.display ="none"
+   
+    
 }
 document.getElementById('cancelButton').onclick = () => {
     confirmButtn.style.display ="initial"
@@ -72,3 +93,9 @@ var getJSON = function(url, callback) {
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 };
+
+async function getCoordinates(location,callback){
+    let Response = await fetch('https://api.opencagedata.com/geocode/v1/json?q='+ location + '&key=6e978319e06444d481d5ac3f328be3ef');
+    let data = await Response.json()
+    callback(data);
+  }
