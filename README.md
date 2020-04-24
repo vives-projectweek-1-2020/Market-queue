@@ -5,6 +5,8 @@
 ![GitHub issues](https://img.shields.io/github/issues/vives-projectweek-1-2020/Market-queue?style=plastic)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/vives-projectweek-1-2020/Market-queue?style=plastic)
 
+[Introduction video](https://youtu.be/LKQL4AQuwAg)
+
 ## Goals
 * Building a WPF app and site, to get data, where users are going, and to allow us to get their position. And show where other people are going.
 * show a screen to give people information how many people there are close, 2 buttons, going out and add place(or shop)

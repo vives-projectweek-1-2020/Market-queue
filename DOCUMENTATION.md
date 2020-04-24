@@ -13,6 +13,10 @@ Run **`node SecureDBhttp.js`** to run the REST API using http.
 
 You can find the usage [here](./database/API_usage.md).
 
+## People counter
+
+You can find the code for the raspberry pi [here](./code.py).
+
 # Front-end
 
 ## [WPF application](./MarketQueueWPF)
