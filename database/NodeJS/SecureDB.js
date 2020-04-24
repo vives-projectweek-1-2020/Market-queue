@@ -21,15 +21,13 @@ let connection = mysql.createConnection({
     password: ""
   });
 
-  const options = {
-    key: fs.readFileSync('key.pem'),
-    cert: fs.readFileSync('cert.pem')
-  };
-  
-  https.createServer(options, function (req, res) {
-    res.writeHead(200);
-    res.end("hello world\n");
-  }).listen(port, () => console.log(`Example app listening at https://localhost:${port}`));
+var key = fs.readFileSync('./selfsigned.key');
+var cert = fs.readFileSync('./selfsigned.crt');
+var options = {
+  key: key,
+  cert: cert
+};
+https.createServer(options, app).listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
 
 connection.connect((error)=>{
   if (error) { console.log("Can't connect to DB\nerrorOR: " + JSON.stringify(error));}
