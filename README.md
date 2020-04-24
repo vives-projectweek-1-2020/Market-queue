@@ -1,5 +1,6 @@
 # Market queue
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/dd6b92c9-030e-468b-b476-761fd760f822/deploy-status)](https://app.netlify.com/sites/market-queue/deploys)
 ![GitHub](https://img.shields.io/github/license/vives-projectweek-1-2020/Market-queue?style=plastic)
 ![GitHub issues](https://img.shields.io/github/issues/vives-projectweek-1-2020/Market-queue?style=plastic)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/vives-projectweek-1-2020/Market-queue?style=plastic)
