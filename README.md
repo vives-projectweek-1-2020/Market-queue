@@ -6,10 +6,10 @@
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/vives-projectweek-1-2020/Market-queue?style=plastic)
 
 ## Goals
-* Builing a WPF app and site, to get data, where users are going, and to allow us to get their position. And show where other people are going.
+* Building a WPF app and site, to get data, where users are going, and to allow us to get their position. And show where other people are going.
 * show a screen to give people information how many people there are close, 2 buttons, going out and add place(or shop)
     * going out --> give information about the place your going, how you are going and how long your going to stay.
-    * add Area --> (check if there is something else close so that you dont have duplicates nor to many places to checking to. (every km or so)) gps coordinates or adress. 
+    * add Area --> (check if there is something else close so that you don't have duplicates nor to many places to checking to. (every km or so)) gps coordinates or address. 
 
 ## Responsibilities
 * Dimi --> Setting up database
@@ -22,7 +22,7 @@
 * Raspberry Pi 4 running a MariaDB database.
 * [coordinates API](https://opencagedata.com/)
 * Website (html, css & js)
-* Raspberry Pi 4 sending data when somone walks trough the sensor of the Velleman Kit from electronics
+* Raspberry Pi 4 sending data when someone walks trough the sensor of the Velleman MK120 Kit from electronics
 
 ## Members
 ~ [Dimi Catrysse](https://github.com/DimDim2001)  
