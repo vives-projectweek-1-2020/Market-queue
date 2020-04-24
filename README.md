@@ -13,18 +13,16 @@
 
 ## Responsibilities
 * Dimi --> Setting up database
-* Daan --> Wpf en grafische layouts
+* Daan --> Wpf and graphics
 * felix --> Code Behind Wpf/site
 * Aaron -->Site/Code Behind Wpf
 
 ## Used services
 * Wpf application, with c# behind code
-* MySQL as database.
-
-## Acomplished things
-
-## Expansions
-* visualisation with map.
+* Raspberry Pi 4 running a MariaDB database.
+* [coordinates API](https://opencagedata.com/)
+* Website (html, css & js)
+* Raspberry Pi 4 sending data when somone walks trough the sensor of the Velleman Kit from electronics
 
 ## Members
 ~ [Dimi Catrysse](https://github.com/DimDim2001)  
@@ -40,3 +38,6 @@
 ## Used sites
 
  * https://www.codeproject.com/Articles/43438/Connect-C-to-MySQL
+ * https://opencagedata.com/
+ * https://www.tutorialrepublic.com/faq/how-to-get-the-value-of-text-input-field-using-javascript.php
+ * https://www.freepik.com/premium-photo/beautiful-clouds-blue-sky-background_2919792.htm#page=1&query=blue%20sky%20background&position=24
