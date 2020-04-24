@@ -54,9 +54,9 @@ document.getElementById('confirmButton').onclick = () => {
         var MyLatitude = geojson.results[0].geometry.lat;
         var MyLongitude = geojson.results[0].geometry.lng;
 
-        getJSON('http://91.181.93.103:3040/get/area?longitude=' + MyLongitude + '&latitude=' + MyLatitude + '&return=area_id',function(json){
+        getJSON('https://91.181.93.103:3040/get/area?longitude=' + MyLongitude + '&latitude=' + MyLatitude + '&return=area_id',function(json){
             var areaID = JSON.parse(json)[0].id;
-              getJSON('http://91.181.93.103:3040/add/visitor?area_id=' + areaID + '&duration=' + inputTime + '&offset=' + inputArriveTime,function(json2){
+              getJSON('https://91.181.93.103:3040/add/visitor?area_id=' + areaID + '&duration=' + inputTime + '&offset=' + inputArriveTime,function(json2){
                   console.log(json2);
                   if(json2.startsWith("SUCCESS"))
                   {

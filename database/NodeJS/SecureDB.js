@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const cors = require('cors')
+const https = require('https');
+const fs = require('fs');
+
 app.use(cors({
  origin(origin, callback) {
  return callback(null, true)
@@ -18,7 +21,11 @@ let connection = mysql.createConnection({
     password: ""
   });
 
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
+  https.createServer({
+    key: fs.readFileSync('./key.pem'),
+    cert: fs.readFileSync('./cert.pem'),
+    passphrase: 'HTTPS'
+}, app).listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
 
 connection.connect((error)=>{
   if (error) { console.log("Can't connect to DB\nerrorOR: " + JSON.stringify(error));}
