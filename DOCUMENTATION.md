@@ -1,6 +1,6 @@
 # Back-end
 
-## Database: [create and insert values](./database/InserValues)
+## Database: [create and insert values](./database/InsertValues)
 
 This program makes it possible to create the database and the tables.  
 It also imports locations from [speelruimte.json](./database/InserValues/InsertValues/speelruimte.json).  
