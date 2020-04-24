@@ -8,7 +8,7 @@ We got this file from the [open data of Bruges](https://www.brugge.be/open-data-
 
 ## REST API: [get/insert data from/to the database](./database/NodeJS)
 
-Run **`node SecureDB.js`** to run the REST API using https.
+Run **`node SecureDB.js`** to run the REST API using https.  
 Run **`node SecureDBhttp.js`** to run the REST API using http.
 
 You can find the usage [here](./database/API_usage.md).
