@@ -54,7 +54,7 @@ namespace MarketQueueWPF
                     throw new FormatException();
                 }
 
-                string url = "http://91.181.93.103:3040/add/visitor?area_id=" + id + "&duration=" + duration + "&offset=" + offset;
+                string url = "http://91.181.93.103:4040/add/visitor?area_id=" + id + "&duration=" + duration + "&offset=" + offset;
                 string answer = SendAndRequestData(url);
                 if (!answer.StartsWith("SUCCESS"))
                 {

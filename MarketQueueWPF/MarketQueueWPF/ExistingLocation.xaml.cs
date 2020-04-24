@@ -65,7 +65,7 @@ namespace MarketQueueWPF
             try
             {
                 
-                string url = "http://91.181.93.103:3040/get/area?latitude=" + latitude.Replace(",", ".") + "&longitude=" + longtitude.Replace(",", ".") + "&return=area_id";
+                string url = "http://91.181.93.103:4040/get/area?latitude=" + latitude.Replace(",", ".") + "&longitude=" + longtitude.Replace(",", ".") + "&return=area_id";
                 var data = SendAndRequestData(url);
                 Console.WriteLine("\n data get closest areas: " + data + "\n");
                 List<Area> items = new List<Area>();
@@ -90,7 +90,7 @@ namespace MarketQueueWPF
         }
         private string GetVisitorsFromAnArea(string areaId)
         {
-            string url = "http://91.181.93.103:3040/get/visitor?area_id=" + areaId + "&return=count";
+            string url = "http://91.181.93.103:4040/get/visitor?area_id=" + areaId + "&return=count";
             var data = SendAndRequestData(url);
             var rawData = JArray.Parse(data)[0]["total"].ToString();
             Console.WriteLine("\n Amount of people in AREA0 close to you" + data + "\n");
@@ -135,7 +135,7 @@ namespace MarketQueueWPF
         }
         private string GetGeolocationFRomAnArea(string areaID)
         {
-            string url = "http://91.181.93.103:3040/get/area?id=" + areaID;
+            string url = "http://91.181.93.103:4040/get/area?id=" + areaID;
             var data = SendAndRequestData(url);
             place0Lng = JArray.Parse(data)[0]["longitude"].ToString();
             place0Lat = JArray.Parse(data)[0]["latitude"].ToString();

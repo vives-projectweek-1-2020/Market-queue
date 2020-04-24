@@ -16,7 +16,9 @@
         FontFamily="{materialDesign:MaterialDesignFont}"
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded">
-    <Grid Margin="10" >
+    <Grid  >
+        <Image Source="./backgroundSky.jpg" Stretch="Fill"/>
+
         <TextBlock Text="Welcome to our Market Queue app! " FontSize="20" 
                    FontFamily="Times New Roman" FontWeight="DemiBold" HorizontalAlignment="Center" 
                    VerticalAlignment="Top" Padding="20"/>

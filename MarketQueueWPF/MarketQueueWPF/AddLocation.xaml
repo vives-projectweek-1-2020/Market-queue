@@ -15,7 +15,9 @@
         TextElement.FontSize="14"
         FontFamily="{materialDesign:MaterialDesignFont}"
         WindowStartupLocation="CenterScreen">
-    <Grid Margin="10">
+    <Grid >
+        <Image Source="./backgroundSky.jpg" Stretch="Fill"/>
+
         <TextBlock x:Name="text1" FontSize="20" TextWrapping="WrapWithOverflow" TextAlignment="Center" FontFamily="Times New Roman"
                    FontWeight="DemiBold" Padding="0 20 0 0"><Run Text="What location do you want to add? "/>
                    <LineBreak/><Run Text="Can we use your current location?"/>

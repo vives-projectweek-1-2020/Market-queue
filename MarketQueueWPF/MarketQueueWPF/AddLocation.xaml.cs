@@ -96,7 +96,7 @@ namespace MarketQueueWPF
             int? totalNearbyAreas = TotalNearbyAreas(latitude, longitude);
             if (totalNearbyAreas != null && TotalNearbyAreas(latitude,longitude)<5)
             {
-                string url = "http://91.181.93.103:3040/add/area?latitude=" + latitude + "&longitude=" + longitude;
+                string url = "http://91.181.93.103:4040/add/area?latitude=" + latitude + "&longitude=" + longitude;
                 string data = "";
                 using (System.Net.WebClient webClient = new System.Net.WebClient())
                 {
@@ -116,7 +116,7 @@ namespace MarketQueueWPF
         {
             try
             {
-                string url = "http://91.181.93.103:3040/get/area?longitude=" + longitude + "&latitude=" + latitude + "&return=area_id";
+                string url = "http://91.181.93.103:4040/get/area?longitude=" + longitude + "&latitude=" + latitude + "&return=area_id";
                 string data = "";
                 using (System.Net.WebClient webClient = new System.Net.WebClient())
                 {
