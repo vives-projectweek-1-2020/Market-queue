@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="StyleSheet" href="../CSS/Index.css">
+    <link rel="StyleSheet" href="../CSS/GoingOut.css">
+    <link rel="icon" type="image/png"  href="../img/logo.png">
+    <script src="../JavaScript/GoingOut.js" defer></script>
+    <title>Going Out</title>
+</head>
+<body class="body">
+    <div class="logodiv">
+    <img src="../img/logo.jpg" class="logo" id="goingoutlogo">
+
+    <h1>Going Out</h1>
+</div>
+    <hr id="separator">
+    <div class="nav">
+        <button  class="navbutton" id = "homepageButton" onclick="location.href = '../';">Homepage</button>
+        <button  class="navbutton" id = "goingoutButton" onclick="location.href = '../GoingOut/';">Going Out</button>
+        <button  class="navbutton" id = "addareaButton" onclick="location.href = '../AddArea/';">Add Area</button>
+        <button  class="navbutton" id = "aboutusButton" onclick="location.href = '../AboutUs/';">About us</button>
+    </div>
+
+    
+<h3>Where are you going?</h3>
+<input type="text" id="visitPlace"/>
+
+<h4>In how much time will you arrive there?</h4>
+<div class="timeflex">
+<input class="timeinput" type="number" id="arriveTime" >
+<p class="mins">mins</p>
+</div>
+
+<h5>How long are you staying?</h5>
+<div class="timeflex"><input class="timeinput" type="number" id="visitTime">
+<p class="mins">mins</p>
+</div>
+<div>
+<button id="EnterButton"  >Enter</button>
+</div>
+
+<div class="confirmBox" id="confirmBlank">
+   <p id="confirm">Please confirm:<br><br>-Place: XX<br>-Arrive time: X mins<br>-Visit time: X mins</p>
+   <button class="confirmButtons" id="confirmButton">Confirm</button>
+   <button class="confirmButtons" id="cancelButton">Cancel</button>
+</div>
+</body>
+</html>

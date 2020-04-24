@@ -1,0 +1,19 @@
+
+#checkbox{
+    display: inline;
+}
+#isAtPlace{
+    margin-right: 20px;
+    vertical-align: middle;
+}   
+#isThereTexts{
+    margin-left: 25px;
+    display: inline;
+}   
+#Submit{
+    margin-top: 25px;
+}
+
+#text{
+    margin-bottom: 20%;
+}

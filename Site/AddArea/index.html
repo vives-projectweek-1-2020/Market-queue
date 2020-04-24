@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="StyleSheet" href="../CSS/Index.css">
+    <link rel="StyleSheet" href="../CSS/AddArea.css">
+    <script src="../JavaScript/AddArea.js" defer></script>
+    <link rel="icon" type="image/png"  href="../img/logo.png">
+    <title>Add area</title>
+</head>
+<body>
+    <div class="logodiv">
+    <img src="../img/logo.jpg" class="logo" id="addarealogo">
+    <h1>Add Area</h1>
+</div>
+    <hr id="separator">
+    <div class="nav">
+        <button  class="navbutton" id = "homepageButton" onclick="location.href = '../';">Homepage</button>
+        <button  class="navbutton" id = "goingoutButton" onclick="location.href = '../GoingOut/';">Going Out</button>
+        <button  class="navbutton" id = "addareaButton" onclick="location.href = '../AddArea/';">Add Area</button>
+        <button  class="navbutton" id = "aboutusButton" onclick="location.href = '../AboutUs/';">About us</button>
+    </div>
+    <h2>Please let us use your current location!</h2>
+    <p id = "namePlacetext">What is the name of the place that you want to add?</p>
+<input type="text"  id ="streetNamePlace" autofocus/>
+<input type="text"  id ="villageName"/>
+<div id="grid">
+    <p id = "isThereTexts"><input type="checkbox"  id ="isAtPlace"/>I'm there at the moment, use my location.</p>
+    
+</div>
+<button onclick="geolocationOrAdress()" class="button" id="Submit"> Submit</button>
+<p id ="text"></p>
+</body>
+</html>
