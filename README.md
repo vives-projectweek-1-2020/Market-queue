@@ -41,3 +41,7 @@
  * https://opencagedata.com/
  * https://www.tutorialrepublic.com/faq/how-to-get-the-value-of-text-input-field-using-javascript.php
  * https://www.freepik.com/premium-photo/beautiful-clouds-blue-sky-background_2919792.htm#page=1&query=blue%20sky%20background&position=24
+
+ ## Documentation
+
+ Documentation can be found [here](./DOCUMENTATION.md)
